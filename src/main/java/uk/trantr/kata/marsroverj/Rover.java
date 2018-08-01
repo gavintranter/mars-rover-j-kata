@@ -12,9 +12,12 @@ public final class Rover {
     }
 
     public void process(String commandSequence) {
-        location = "b".equals(commandSequence) ?
-                new Location(1, 0, NORTH) :
-                new Location(1, 2, NORTH);
+        if ("f".equals(commandSequence)) {
+            location = new Location(1, 2, NORTH);
+        }
+        else if ("b".equals(commandSequence)) {
+            location = new Location(1, 0, NORTH);
+        }
     }
 
     @Override
