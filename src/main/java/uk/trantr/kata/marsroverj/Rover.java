@@ -1,6 +1,7 @@
 package uk.trantr.kata.marsroverj;
 
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 import static uk.trantr.kata.marsroverj.Heading.NORTH;
 
@@ -12,12 +13,18 @@ public final class Rover {
     }
 
     public void process(String commandSequence) {
-        if ("f".equals(commandSequence)) {
-            location = new Location(1, 2, NORTH);
-        }
-        else if ("b".equals(commandSequence)) {
-            location = new Location(1, 0, NORTH);
-        }
+        IntStream.range(0, commandSequence.length())
+                .forEach(i -> {
+                    char c = commandSequence.charAt(i);
+
+                    if ('f' == c) {
+                        location = new Location(1, location.getY() + 1, NORTH);
+                    }
+                    else if ('b' == c) {
+                        location = new Location(1, 0, NORTH);
+                    }
+                });
+
     }
 
     @Override

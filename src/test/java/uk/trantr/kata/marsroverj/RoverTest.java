@@ -13,10 +13,11 @@ class RoverTest {
 
     private final Rover rover = new Rover(INITIAL_LOCATION);
 
-    @ParameterizedTest(name = "Command: {0} will cause Rover to be at {1}")
+    @ParameterizedTest(name = "Case: {index} -> Command: {0} will cause Rover to be at {1}")
     @CsvSource({"f, 1/2/NORTH",
     "b, 1/0/NORTH",
-    "a, 1/1/NORTH"})
+    "a, 1/1/NORTH",
+    "ff, 1/3/NORTH"})
     void willMoveRover(String commandSequence,
                        @ConvertWith(LocationConverter.class) Location finalLocation) {
 

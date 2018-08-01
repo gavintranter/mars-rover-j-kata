@@ -13,6 +13,10 @@ public final class Location {
         this.heading = heading;
     }
 
+    public int getY() {
+        return y;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
