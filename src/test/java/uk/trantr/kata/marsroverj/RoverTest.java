@@ -17,7 +17,9 @@ class RoverTest {
     @CsvSource({"f, 1/2/NORTH",
     "b, 1/0/NORTH",
     "a, 1/1/NORTH"})
-    void willMoveRover(String commandSequence, @ConvertWith(LocationConverter.class) Location finalLocation) {
+    void willMoveRover(String commandSequence,
+                       @ConvertWith(LocationConverter.class) Location finalLocation) {
+
         rover.process(commandSequence);
 
         assertThat(rover).isEqualTo(new Rover(finalLocation));
