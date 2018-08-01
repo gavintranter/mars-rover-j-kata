@@ -21,7 +21,7 @@ public final class Rover {
                         location = new Location(1, location.getY() + 1, NORTH);
                     }
                     else if ('b' == c) {
-                        location = new Location(1, 0, NORTH);
+                        location = new Location(1, location.getY() - 1, NORTH);
                     }
                 });
 
