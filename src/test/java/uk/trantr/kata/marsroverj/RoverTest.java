@@ -17,4 +17,13 @@ class RoverTest {
 
         assertThat(rover).isEqualTo(new Rover(new Location(1, 2, NORTH)));
     }
+
+    @Test
+    void willMoveRoverBackwards() {
+        Rover rover = new Rover(INITIAL_LOCATION);
+
+        rover.process("b");
+
+        assertThat(rover).isEqualTo(new Rover(new Location(1, 0, NORTH)));
+    }
 }
