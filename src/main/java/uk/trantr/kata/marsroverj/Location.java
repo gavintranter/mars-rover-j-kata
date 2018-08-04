@@ -13,8 +13,16 @@ public final class Location {
         this.heading = heading;
     }
 
+    public int getX() {
+        return x;
+    }
+
     public int getY() {
         return y;
+    }
+
+    public Heading getHeading() {
+        return heading;
     }
 
     @Override
