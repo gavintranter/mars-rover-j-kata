@@ -6,13 +6,13 @@ public enum Command {
 
     f {
         @Override
-        public Location translateFrom(Location location) {
+        public Location executeAgainst(Location location) {
             return location.translateTo(location.getHeading().getVector());
         }
     },
     b {
         @Override
-        public Location translateFrom(Location location) {
+        public Location executeAgainst(Location location) {
             return location.translateTo(location.getHeading().getReverseVector());
         }
     };
@@ -21,5 +21,5 @@ public enum Command {
         return valueOf(String.valueOf(((char)symbol)));
     }
 
-    public abstract Location translateFrom(Location location);
+    public abstract Location executeAgainst(Location location);
 }

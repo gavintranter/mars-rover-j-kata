@@ -14,7 +14,7 @@ public final class Rover {
     public void process(String commandSequence) {
         try {
             commandSequence.chars()
-                    .forEach(c -> location = Command.parse(c).translateFrom(location));
+                    .forEach(c -> location = Command.parse(c).executeAgainst(location));
         } catch (IllegalArgumentException e) {
             // Ignore unknown commands
         }
