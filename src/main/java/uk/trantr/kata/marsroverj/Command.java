@@ -1,21 +1,12 @@
 package uk.trantr.kata.marsroverj;
 
-import static uk.trantr.kata.marsroverj.Heading.NORTH;
-import static uk.trantr.kata.marsroverj.Heading.SOUTH;
-
 public enum Command {
 
     F{
         @Override
         public Location translateFrom(Location location) {
             int y = location.getY();
-            if (NORTH == location.getHeading()) {
-                return location.translatingY(y + 1);
-            }
-            if (SOUTH == location.getHeading()) {
-                return location.translatingY(y - 1);
-            }
-
+            y = location.getHeading().getVector().apply(y);
             return new Location(location.getX(), y, location.getHeading());
         }
     },
@@ -23,13 +14,7 @@ public enum Command {
         @Override
         public Location translateFrom(Location location) {
             int y = location.getY();
-            if (NORTH == location.getHeading()) {
-                return location.translatingY(y - 1);
-            }
-            if (SOUTH == location.getHeading()) {
-                return location.translatingY(y + 1);
-            }
-
+            y = location.getHeading().getReverseVector().apply(y);
             return new Location(location.getX(), y, location.getHeading());
         }
     };
