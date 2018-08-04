@@ -4,10 +4,10 @@ import java.util.Objects;
 import java.util.function.Function;
 
 public class Coordinate {
-    public static final Function<Coordinate, Coordinate> Y_DASH = (c) -> new Coordinate(c.x, c.y + 1);
-    public static final Function<Coordinate, Coordinate> Y_REVERSE_DASH = (c) -> new Coordinate(c.x, c.y - 1);
-    public static final Function<Coordinate, Coordinate> X_DASH = (c) -> new Coordinate(c.x + 1, c.y);
-    public static final Function<Coordinate, Coordinate> X_REVERSE_DASH = (c) -> new Coordinate(c.x - 1, c.y);
+    public static final Function<Coordinate, Coordinate> Y_VECTOR = (c) -> new Coordinate(c.x, c.y + 1);
+    public static final Function<Coordinate, Coordinate> Y_REVERSE_VECTOR = (c) -> new Coordinate(c.x, c.y - 1);
+    public static final Function<Coordinate, Coordinate> X_VECTOR = (c) -> new Coordinate(c.x + 1, c.y);
+    public static final Function<Coordinate, Coordinate> X_REVERSE_VECTOR = (c) -> new Coordinate(c.x - 1, c.y);
 
     private final int x;
     private final int y;

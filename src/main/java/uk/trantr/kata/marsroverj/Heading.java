@@ -6,45 +6,45 @@ public enum Heading {
     NORTH {
         @Override
         public Function<Coordinate, Coordinate> getVector() {
-            return Coordinate.Y_DASH;
+            return Coordinate.Y_VECTOR;
         }
 
         @Override
         public Function<Coordinate, Coordinate> getReverseVector() {
-            return Coordinate.Y_REVERSE_DASH;
+            return Coordinate.Y_REVERSE_VECTOR;
         }
     },
     EAST {
         @Override
         public Function<Coordinate, Coordinate> getVector() {
-            return Coordinate.X_DASH;
+            return Coordinate.X_VECTOR;
         }
 
         @Override
         public Function<Coordinate, Coordinate> getReverseVector() {
-            return Coordinate.X_REVERSE_DASH;
+            return Coordinate.X_REVERSE_VECTOR;
         }
     },
     SOUTH {
         @Override
         public Function<Coordinate, Coordinate> getVector() {
-            return Coordinate.Y_REVERSE_DASH;
+            return Coordinate.Y_REVERSE_VECTOR;
         }
 
         @Override
         public Function<Coordinate, Coordinate> getReverseVector() {
-            return Coordinate.Y_DASH;
+            return Coordinate.Y_VECTOR;
         }
     },
     WEST {
         @Override
         public Function<Coordinate, Coordinate> getVector() {
-            return Coordinate.X_REVERSE_DASH;
+            return Coordinate.X_REVERSE_VECTOR;
         }
 
         @Override
         public Function<Coordinate, Coordinate> getReverseVector() {
-            return Coordinate.X_DASH;
+            return Coordinate.X_VECTOR;
         }
     };
 
