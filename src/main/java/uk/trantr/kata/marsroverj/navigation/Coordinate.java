@@ -17,7 +17,7 @@ public class Coordinate {
         this.y = y;
     }
 
-    public Coordinate translate(Function<Coordinate, Coordinate> vector) {
+    public Coordinate apply(Function<Coordinate, Coordinate> vector) {
         return vector.apply(this);
     }
 

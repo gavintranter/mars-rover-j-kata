@@ -20,8 +20,8 @@ public final class Location {
         return heading;
     }
 
-    public Location translateTo(Function<Coordinate, Coordinate> vector) {
-        return new Location(coordinate.translate(vector), heading);
+    public Location apply(Function<Coordinate, Coordinate> vector) {
+        return new Location(coordinate.apply(vector), heading);
     }
 
     @Override

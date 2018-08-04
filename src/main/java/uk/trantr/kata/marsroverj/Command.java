@@ -7,13 +7,13 @@ public enum Command {
     f {
         @Override
         public Location executeAgainst(Location location) {
-            return location.translateTo(location.getHeading().getVector());
+            return location.apply(location.getHeading().getVector());
         }
     },
     b {
         @Override
         public Location executeAgainst(Location location) {
-            return location.translateTo(location.getHeading().getReverseVector());
+            return location.apply(location.getHeading().getReverseVector());
         }
     };
 
