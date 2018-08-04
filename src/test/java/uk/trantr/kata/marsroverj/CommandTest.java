@@ -5,16 +5,26 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CommandTest {
 
-    // This test cheats a little by taking advantage of the implicit char <-> int conversions
+
     @ParameterizedTest
-    @CsvSource({"f, F", "b, B"})
+    @CsvSource({"f, f", "b, b"})
     void willParseKnownCommands(char symbol, Command expectedCommand) {
         assertThat(Command.parse(symbol)).isSameAs(expectedCommand);
+    }
+
+    // The parameterised test cheat a little by taking advantage of the implicit char <-> int conversions
+
+    @Test
+    void willIgnoreUnknownCommands() {
+        Throwable thrown = Assertions.catchThrowable(() -> Command.parse('a'));
+
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest(name = "Case: {index} -> Command: {0} will cause Rover to moe from {1} to {2}")
@@ -31,9 +41,10 @@ class CommandTest {
         assertThat(actualLocation).isEqualTo(finalLocation);
     }
 
-    @Test
-    void willIgnoreUnknownCommands() {
-        Throwable thrown = Assertions.catchThrowable(() -> Command.parse('A'));
+    @ParameterizedTest
+    @ValueSource(chars = {'F', 'B', 'R', 'E'})
+    void willIgnoreUppercaseRepresentationsOfCommands(char symbol) {
+        Throwable thrown = Assertions.catchThrowable(() -> Command.parse(symbol));
 
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
     }

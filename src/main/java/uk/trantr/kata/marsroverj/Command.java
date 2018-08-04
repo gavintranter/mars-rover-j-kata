@@ -2,13 +2,13 @@ package uk.trantr.kata.marsroverj;
 
 public enum Command {
 
-    F{
+    f {
         @Override
         public Location translateFrom(Location location) {
             return location.translatingY(location.getHeading().getVector());
         }
     },
-    B{
+    b {
         @Override
         public Location translateFrom(Location location) {
             return location.translatingY(location.getHeading().getReverseVector());
@@ -16,7 +16,7 @@ public enum Command {
     };
 
     public static Command parse(int symbol) {
-        return valueOf(String.valueOf(((char)symbol)).toUpperCase());
+        return valueOf(String.valueOf(((char)symbol)));
     }
 
     public abstract Location translateFrom(Location location);
