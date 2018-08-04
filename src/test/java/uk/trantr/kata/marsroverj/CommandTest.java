@@ -17,10 +17,11 @@ class CommandTest {
         assertThat(Command.parse(symbol)).isSameAs(expectedCommand);
     }
 
-    @ParameterizedTest(name = "Case: {index} -> Command: {0} will cause Rover to be at {2}")
+    @ParameterizedTest(name = "Case: {index} -> Command: {0} will cause Rover to moe from {1} to {2}")
     @CsvSource({"f, 1/1/NORTH, 1/2/NORTH",
             "b, 1/1/NORTH, 1/0/NORTH",
-            "f, 1/1/SOUTH, 1/0/SOUTH"})
+            "f, 1/1/SOUTH, 1/0/SOUTH",
+            "b, 1/1/SOUTH, 1/2/SOUTH"})
     void willTranslateLocationAppropriateToHeading(char symbol,
                                                    @ConvertWith(LocationConverter.class) Location initialLocation,
                                                    @ConvertWith(LocationConverter.class) Location finalLocation) {

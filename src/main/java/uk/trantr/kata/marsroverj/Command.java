@@ -22,7 +22,15 @@ public enum Command {
     B{
         @Override
         Location translate(Location location) {
-            return null;
+            int y = location.getY();
+            if (NORTH == location.getHeading()) {
+                y = y - 1;
+            }
+            else if (SOUTH == location.getHeading()) {
+                y = y + 1;
+            }
+
+            return new Location(location.getX(), y, location.getHeading());
         }
     };
 
@@ -38,7 +46,7 @@ public enum Command {
             newLocation = this.translate(location);
         }
         else if (this == B) {
-            newLocation = new Location(1, location.getY() - 1, NORTH);
+            newLocation = this.translate(location);
         }
 
 
