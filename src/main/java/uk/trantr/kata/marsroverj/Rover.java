@@ -2,8 +2,6 @@ package uk.trantr.kata.marsroverj;
 
 import java.util.Objects;
 
-import static uk.trantr.kata.marsroverj.Heading.NORTH;
-
 public final class Rover {
     private Location location;
 
@@ -14,14 +12,7 @@ public final class Rover {
     public void process(String commandSequence) {
         try {
             commandSequence.chars()
-                    .forEach(c ->  {
-                        if (Command.F == Command.parse(c)) {
-                            location = new Location(1, location.getY() + 1, NORTH);
-                        }
-                        else if (Command.B == Command.parse(c)) {
-                            location = new Location(1, location.getY() - 1, NORTH);
-                        }
-                    });
+                    .forEach(c -> location = Command.parse(c).translateFrom(location));
         } catch (IllegalArgumentException e) {
             // Ignore unknown commands
         }
