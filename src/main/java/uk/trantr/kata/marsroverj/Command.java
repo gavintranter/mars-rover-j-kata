@@ -5,17 +5,13 @@ public enum Command {
     F{
         @Override
         public Location translateFrom(Location location) {
-            int y = location.getY();
-            y = location.getHeading().getVector().apply(y);
-            return new Location(location.getX(), y, location.getHeading());
+            return location.translatingY(location.getHeading().getVector());
         }
     },
     B{
         @Override
         public Location translateFrom(Location location) {
-            int y = location.getY();
-            y = location.getHeading().getReverseVector().apply(y);
-            return new Location(location.getX(), y, location.getHeading());
+            return location.translatingY(location.getHeading().getReverseVector());
         }
     };
 

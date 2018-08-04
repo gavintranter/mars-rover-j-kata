@@ -1,6 +1,7 @@
 package uk.trantr.kata.marsroverj;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 public final class Location {
     private final int x;
@@ -13,16 +14,8 @@ public final class Location {
         this.heading = heading;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public Location translatingY(int value) {
-        return new Location(x, value, heading);
-    }
-
-    public int getY() {
-        return y;
+    public Location translatingY(Function<Integer, Integer> vector) {
+        return new Location(x, vector.apply(y), heading);
     }
 
     public Heading getHeading() {
