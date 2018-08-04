@@ -2,7 +2,7 @@ package uk.trantr.kata.marsroverj;
 
 import uk.trantr.kata.marsroverj.navigation.Location;
 
-public enum Command {
+enum Command {
 
     f {
         @Override

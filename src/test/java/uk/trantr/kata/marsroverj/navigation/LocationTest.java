@@ -11,7 +11,7 @@ class LocationTest {
     void willTransformLocation() {
         Location initialLocation = new Location(1, 1, NORTH);
 
-        Location location = initialLocation.apply(Coordinate.X_VECTOR);
+        Location location = initialLocation.apply(Coordinate.Vector.X);
 
         assertThat(location).isNotEqualTo(initialLocation)
                 .isEqualTo(new Location(2, 1, NORTH));

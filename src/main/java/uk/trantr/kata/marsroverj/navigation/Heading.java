@@ -1,53 +1,51 @@
 package uk.trantr.kata.marsroverj.navigation;
 
-import java.util.function.Function;
-
 public enum Heading {
     NORTH {
         @Override
-        public Function<Coordinate, Coordinate> getVector() {
-            return Coordinate.Y_VECTOR;
+        public Coordinate.Vector getVector() {
+            return Coordinate.Vector.Y;
         }
 
         @Override
-        public Function<Coordinate, Coordinate> getReverseVector() {
-            return Coordinate.Y_REVERSE_VECTOR;
+        public Coordinate.Vector getReverseVector() {
+            return Coordinate.Vector.Y_REVERSE;
         }
     },
     EAST {
         @Override
-        public Function<Coordinate, Coordinate> getVector() {
-            return Coordinate.X_VECTOR;
+        public Coordinate.Vector getVector() {
+            return Coordinate.Vector.X;
         }
 
         @Override
-        public Function<Coordinate, Coordinate> getReverseVector() {
-            return Coordinate.X_REVERSE_VECTOR;
+        public Coordinate.Vector getReverseVector() {
+            return Coordinate.Vector.X_REVERSE;
         }
     },
     SOUTH {
         @Override
-        public Function<Coordinate, Coordinate> getVector() {
-            return Coordinate.Y_REVERSE_VECTOR;
+        public Coordinate.Vector getVector() {
+            return Coordinate.Vector.Y_REVERSE;
         }
 
         @Override
-        public Function<Coordinate, Coordinate> getReverseVector() {
-            return Coordinate.Y_VECTOR;
+        public Coordinate.Vector getReverseVector() {
+            return Coordinate.Vector.Y;
         }
     },
     WEST {
         @Override
-        public Function<Coordinate, Coordinate> getVector() {
-            return Coordinate.X_REVERSE_VECTOR;
+        public Coordinate.Vector getVector() {
+            return Coordinate.Vector.X_REVERSE;
         }
 
         @Override
-        public Function<Coordinate, Coordinate> getReverseVector() {
-            return Coordinate.X_VECTOR;
+        public Coordinate.Vector getReverseVector() {
+            return Coordinate.Vector.X;
         }
     };
 
-    public abstract Function<Coordinate, Coordinate> getVector();
-    public abstract Function<Coordinate, Coordinate> getReverseVector();
+    public abstract Coordinate.Vector getVector();
+    public abstract Coordinate.Vector getReverseVector();
 }

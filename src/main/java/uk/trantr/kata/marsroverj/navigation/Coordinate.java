@@ -3,22 +3,34 @@ package uk.trantr.kata.marsroverj.navigation;
 import java.util.Objects;
 import java.util.function.Function;
 
-public class Coordinate {
-    public static final Function<Coordinate, Coordinate> Y_VECTOR = (c) -> new Coordinate(c.x, c.y + 1);
-    public static final Function<Coordinate, Coordinate> Y_REVERSE_VECTOR = (c) -> new Coordinate(c.x, c.y - 1);
-    public static final Function<Coordinate, Coordinate> X_VECTOR = (c) -> new Coordinate(c.x + 1, c.y);
-    public static final Function<Coordinate, Coordinate> X_REVERSE_VECTOR = (c) -> new Coordinate(c.x - 1, c.y);
+final class Coordinate {
+    enum Vector {
+        Y(c -> new Coordinate(c.x, c.y + 1)),
+        Y_REVERSE(c -> new Coordinate(c.x, c.y - 1)),
+        X(c -> new Coordinate(c.x + 1, c.y)),
+        X_REVERSE(c -> new Coordinate(c.x - 1, c.y));
+
+        private final Function<Coordinate, Coordinate> vector;
+
+        Vector(Function<Coordinate, Coordinate> vector) {
+            this.vector = vector;
+        }
+
+        Function<Coordinate, Coordinate> getVector() {
+            return vector;
+        }
+    }
 
     private final int x;
     private final int y;
 
-    public Coordinate(int x, int y) {
+    Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public Coordinate apply(Function<Coordinate, Coordinate> vector) {
-        return vector.apply(this);
+    Coordinate apply(Vector vector) {
+        return vector.getVector().apply(this);
     }
 
     @Override

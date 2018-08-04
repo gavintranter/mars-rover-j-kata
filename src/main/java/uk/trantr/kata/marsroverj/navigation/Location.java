@@ -1,7 +1,6 @@
 package uk.trantr.kata.marsroverj.navigation;
 
 import java.util.Objects;
-import java.util.function.Function;
 
 public final class Location {
     private final Coordinate coordinate;
@@ -20,7 +19,7 @@ public final class Location {
         return heading;
     }
 
-    public Location apply(Function<Coordinate, Coordinate> vector) {
+    public Location apply(Coordinate.Vector vector) {
         return new Location(coordinate.apply(vector), heading);
     }
 
