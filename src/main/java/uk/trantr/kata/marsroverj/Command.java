@@ -10,10 +10,10 @@ public enum Command {
         public Location translateFrom(Location location) {
             int y = location.getY();
             if (NORTH == location.getHeading()) {
-                y = y + 1;
+                return location.translatingY(y + 1);
             }
-            else if (SOUTH == location.getHeading()) {
-                y = y - 1;
+            if (SOUTH == location.getHeading()) {
+                return location.translatingY(y - 1);
             }
 
             return new Location(location.getX(), y, location.getHeading());
@@ -24,10 +24,10 @@ public enum Command {
         public Location translateFrom(Location location) {
             int y = location.getY();
             if (NORTH == location.getHeading()) {
-                y = y - 1;
+                return location.translatingY(y - 1);
             }
-            else if (SOUTH == location.getHeading()) {
-                y = y + 1;
+            if (SOUTH == location.getHeading()) {
+                return location.translatingY(y + 1);
             }
 
             return new Location(location.getX(), y, location.getHeading());

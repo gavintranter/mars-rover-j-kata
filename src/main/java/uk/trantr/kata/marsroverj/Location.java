@@ -17,6 +17,10 @@ public final class Location {
         return x;
     }
 
+    public Location translatingY(int value) {
+        return new Location(x, value, heading);
+    }
+
     public int getY() {
         return y;
     }
