@@ -1,10 +1,8 @@
-package uk.trantr.kata.marsroverj;
+package uk.trantr.kata.marsroverj.navigation;
 
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.params.converter.ArgumentConversionException;
 import org.junit.jupiter.params.converter.ArgumentConverter;
-import uk.trantr.kata.marsroverj.navigation.Heading;
-import uk.trantr.kata.marsroverj.navigation.Location;
 
 public class LocationConverter implements ArgumentConverter {
     @Override

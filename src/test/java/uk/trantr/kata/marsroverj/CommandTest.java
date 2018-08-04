@@ -7,6 +7,7 @@ import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import uk.trantr.kata.marsroverj.navigation.Location;
+import uk.trantr.kata.marsroverj.navigation.LocationConverter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
