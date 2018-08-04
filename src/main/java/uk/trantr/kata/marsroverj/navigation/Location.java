@@ -19,7 +19,7 @@ public final class Location {
         return heading;
     }
 
-    public Location apply(Coordinate.Vector vector) {
+    public Location apply(Coordinate vector) {
         return new Location(coordinate.apply(vector), heading);
     }
 

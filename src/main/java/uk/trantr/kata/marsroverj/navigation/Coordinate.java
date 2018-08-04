@@ -1,26 +1,8 @@
 package uk.trantr.kata.marsroverj.navigation;
 
 import java.util.Objects;
-import java.util.function.Function;
 
 final class Coordinate {
-    enum Vector {
-        Y(c -> new Coordinate(c.x, c.y + 1)),
-        Y_REVERSE(c -> new Coordinate(c.x, c.y - 1)),
-        X(c -> new Coordinate(c.x + 1, c.y)),
-        X_REVERSE(c -> new Coordinate(c.x - 1, c.y));
-
-        private final Function<Coordinate, Coordinate> vector;
-
-        Vector(Function<Coordinate, Coordinate> vector) {
-            this.vector = vector;
-        }
-
-        Function<Coordinate, Coordinate> getVector() {
-            return vector;
-        }
-    }
-
     private final int x;
     private final int y;
 
@@ -29,8 +11,8 @@ final class Coordinate {
         this.y = y;
     }
 
-    Coordinate apply(Vector vector) {
-        return vector.getVector().apply(this);
+    Coordinate apply(Coordinate vector) {
+        return new Coordinate(x + vector.x, y + vector.y);
     }
 
     @Override

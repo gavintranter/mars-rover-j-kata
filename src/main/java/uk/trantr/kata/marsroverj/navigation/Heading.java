@@ -3,49 +3,49 @@ package uk.trantr.kata.marsroverj.navigation;
 public enum Heading {
     NORTH {
         @Override
-        public Coordinate.Vector getVector() {
-            return Coordinate.Vector.Y;
+        public Coordinate getVector() {
+            return new Coordinate(0, 1);
         }
 
         @Override
-        public Coordinate.Vector getReverseVector() {
-            return Coordinate.Vector.Y_REVERSE;
+        public Coordinate getReverseVector() {
+            return new Coordinate(0, -1);
         }
     },
     EAST {
         @Override
-        public Coordinate.Vector getVector() {
-            return Coordinate.Vector.X;
+        public Coordinate getVector() {
+            return new Coordinate(1, 0);
         }
 
         @Override
-        public Coordinate.Vector getReverseVector() {
-            return Coordinate.Vector.X_REVERSE;
+        public Coordinate getReverseVector() {
+            return new Coordinate(-1, 0);
         }
     },
     SOUTH {
         @Override
-        public Coordinate.Vector getVector() {
-            return Coordinate.Vector.Y_REVERSE;
+        public Coordinate getVector() {
+            return new Coordinate(0, -1);
         }
 
         @Override
-        public Coordinate.Vector getReverseVector() {
-            return Coordinate.Vector.Y;
+        public Coordinate getReverseVector() {
+            return new Coordinate(0, 1);
         }
     },
     WEST {
         @Override
-        public Coordinate.Vector getVector() {
-            return Coordinate.Vector.X_REVERSE;
+        public Coordinate getVector() {
+            return new Coordinate(-1, 0);
         }
 
         @Override
-        public Coordinate.Vector getReverseVector() {
-            return Coordinate.Vector.X;
+        public Coordinate getReverseVector() {
+            return new Coordinate(1, 0);
         }
     };
 
-    public abstract Coordinate.Vector getVector();
-    public abstract Coordinate.Vector getReverseVector();
+    public abstract Coordinate getVector();
+    public abstract Coordinate getReverseVector();
 }

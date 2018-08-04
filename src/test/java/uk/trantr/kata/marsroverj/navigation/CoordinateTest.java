@@ -9,11 +9,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CoordinateTest {
 
     @ParameterizedTest(name = "Case: {index} -> Vector {0} Will transform {1} to {2}")
-    @CsvSource({"Y, 1/1, 1/2",
-            "Y_REVERSE, 1/1, 1/0",
-            "X, 1/1, 2/1",
-            "X_REVERSE, 1/1, 0/1"})
-    void willTranslateLocationAppropriateToHeading(Coordinate.Vector vector,
+    @CsvSource({"0/1, 1/1, 1/2",
+            "0/-1, 1/1, 1/0",
+            "1/0, 1/1, 2/1",
+            "-1/0, 1/1, 0/1"})
+    void willTranslateLocationAppropriateToHeading(@ConvertWith(CoordinateConverter.class) Coordinate vector,
                                                    @ConvertWith(CoordinateConverter.class) Coordinate initital,
                                                    @ConvertWith(CoordinateConverter.class) Coordinate result) {
 
