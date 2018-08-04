@@ -31,7 +31,11 @@ class CommandTest {
     @CsvSource({"f, 1/1/NORTH, 1/2/NORTH",
             "b, 1/1/NORTH, 1/0/NORTH",
             "f, 1/1/SOUTH, 1/0/SOUTH",
-            "b, 1/1/SOUTH, 1/2/SOUTH"})
+            "b, 1/1/SOUTH, 1/2/SOUTH",
+            "f, 1/1/EAST, 2/1/EAST",
+            "b, 1/1/EAST, 0/1/EAST",
+            "f, 1/1/WEST, 0/1/WEST",
+            "b, 1/1/WEST, 2/1/WEST"})
     void willTranslateLocationAppropriateToHeading(char symbol,
                                                    @ConvertWith(LocationConverter.class) Location initialLocation,
                                                    @ConvertWith(LocationConverter.class) Location finalLocation) {

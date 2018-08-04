@@ -5,49 +5,49 @@ import java.util.function.Function;
 public enum Heading {
     NORTH {
         @Override
-        public Function<Integer, Integer> getVector() {
-            return (y) -> y + 1;
+        public Function<Coordinate, Coordinate> getVector() {
+            return Coordinate.Y_DASH;
         }
 
         @Override
-        public Function<Integer, Integer> getReverseVector() {
-            return (y) -> y - 1;
+        public Function<Coordinate, Coordinate> getReverseVector() {
+            return Coordinate.Y_REVERSE_DASH;
         }
     },
     EAST {
         @Override
-        public Function<Integer, Integer> getVector() {
-            throw new UnsupportedOperationException();
+        public Function<Coordinate, Coordinate> getVector() {
+            return Coordinate.X_DASH;
         }
 
         @Override
-        public Function<Integer, Integer> getReverseVector() {
-            throw new UnsupportedOperationException();
+        public Function<Coordinate, Coordinate> getReverseVector() {
+            return Coordinate.X_REVERSE_DASH;
         }
     },
     SOUTH {
         @Override
-        public Function<Integer, Integer> getVector() {
-            return (y) -> y - 1;
+        public Function<Coordinate, Coordinate> getVector() {
+            return Coordinate.Y_REVERSE_DASH;
         }
 
         @Override
-        public Function<Integer, Integer> getReverseVector() {
-            return (y) -> y + 1;
+        public Function<Coordinate, Coordinate> getReverseVector() {
+            return Coordinate.Y_DASH;
         }
     },
     WEST {
         @Override
-        public Function<Integer, Integer> getVector() {
-            throw new UnsupportedOperationException();
+        public Function<Coordinate, Coordinate> getVector() {
+            return Coordinate.X_REVERSE_DASH;
         }
 
         @Override
-        public Function<Integer, Integer> getReverseVector() {
-            throw new UnsupportedOperationException();
+        public Function<Coordinate, Coordinate> getReverseVector() {
+            return Coordinate.X_DASH;
         }
     };
 
-    public abstract Function<Integer, Integer> getVector();
-    public abstract Function<Integer, Integer> getReverseVector();
+    public abstract Function<Coordinate, Coordinate> getVector();
+    public abstract Function<Coordinate, Coordinate> getReverseVector();
 }
