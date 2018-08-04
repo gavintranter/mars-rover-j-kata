@@ -7,7 +7,7 @@ public enum Command {
 
     F{
         @Override
-        Location translate(Location location) {
+        public Location translateFrom(Location location) {
             int y = location.getY();
             if (NORTH == location.getHeading()) {
                 y = y + 1;
@@ -21,7 +21,7 @@ public enum Command {
     },
     B{
         @Override
-        Location translate(Location location) {
+        public Location translateFrom(Location location) {
             int y = location.getY();
             if (NORTH == location.getHeading()) {
                 y = y - 1;
@@ -38,20 +38,5 @@ public enum Command {
         return valueOf(String.valueOf(((char)symbol)).toUpperCase());
     }
 
-    public Location translateFrom(Location location) {
-
-        Location newLocation = null;
-
-        if (this == F) {
-            newLocation = this.translate(location);
-        }
-        else if (this == B) {
-            newLocation = this.translate(location);
-        }
-
-
-        return newLocation;
-    }
-
-    abstract Location translate(Location location);
+    public abstract Location translateFrom(Location location);
 }
