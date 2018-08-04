@@ -1,5 +1,7 @@
 package uk.trantr.kata.marsroverj;
 
+import uk.trantr.kata.marsroverj.navigation.Location;
+
 import java.util.Objects;
 
 public final class Rover {

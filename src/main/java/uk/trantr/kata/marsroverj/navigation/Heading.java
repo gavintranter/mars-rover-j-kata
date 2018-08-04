@@ -1,4 +1,4 @@
-package uk.trantr.kata.marsroverj;
+package uk.trantr.kata.marsroverj.navigation;
 
 import java.util.function.Function;
 
