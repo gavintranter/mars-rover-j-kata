@@ -15,20 +15,16 @@ public final class Rover {
         try {
             commandSequence.chars()
                     .forEach(c ->  {
-                        if (Command.F == getCommand(c)) {
+                        if (Command.F == Command.parse(c)) {
                             location = new Location(1, location.getY() + 1, NORTH);
                         }
-                        else if (Command.B == getCommand(c)) {
+                        else if (Command.B == Command.parse(c)) {
                             location = new Location(1, location.getY() - 1, NORTH);
                         }
                     });
         } catch (IllegalArgumentException e) {
             // Ignore unknown commands
         }
-    }
-
-    private Command getCommand(int c) {
-        return Command.valueOf(String.valueOf(((char)c)).toUpperCase());
     }
 
     @Override
