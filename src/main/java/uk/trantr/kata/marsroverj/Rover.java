@@ -12,15 +12,23 @@ public final class Rover {
     }
 
     public void process(String commandSequence) {
-        commandSequence.chars()
-                .forEach(c ->  {
-                    if ('f' == c) {
-                        location = new Location(1, location.getY() + 1, NORTH);
-                    }
-                    else if ('b' == c) {
-                        location = new Location(1, location.getY() - 1, NORTH);
-                    }
-                });
+        try {
+            commandSequence.chars()
+                    .forEach(c ->  {
+                        if (Command.F == getCommand(c)) {
+                            location = new Location(1, location.getY() + 1, NORTH);
+                        }
+                        else if (Command.B == getCommand(c)) {
+                            location = new Location(1, location.getY() - 1, NORTH);
+                        }
+                    });
+        } catch (IllegalArgumentException e) {
+            // Ignore unknown commands
+        }
+    }
+
+    private Command getCommand(int c) {
+        return Command.valueOf(String.valueOf(((char)c)).toUpperCase());
     }
 
     @Override
