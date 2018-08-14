@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CommandTest {
 
     @ParameterizedTest
-    @CsvSource({"f, f", "b, b"})
+    @CsvSource({"f, f", "b, b", "r, r"})
     void willParseKnownCommands(char symbol, Command expectedCommand) {
         assertThat(Command.parse(symbol)).isSameAs(expectedCommand);
     }

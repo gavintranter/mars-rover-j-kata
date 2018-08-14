@@ -15,6 +15,12 @@ enum Command {
         public Location executeAgainst(Location location) {
             return location.apply(location.getHeading().getReverseVector());
         }
+    },
+    r {
+        @Override
+        public Location executeAgainst(Location location) {
+            return null;
+        }
     };
 
     public static Command parse(int symbol) {
