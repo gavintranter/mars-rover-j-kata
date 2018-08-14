@@ -38,7 +38,7 @@ class CommandTest {
     }
 
     @ParameterizedTest
-    @ValueSource(chars = {'F', 'B', 'R', 'E'})
+    @ValueSource(chars = {'F', 'B', 'R'})
     void willIgnoreUppercaseRepresentationsOfCommands(char symbol) {
         Throwable thrown = Assertions.catchThrowable(() -> Command.parse(symbol));
 
