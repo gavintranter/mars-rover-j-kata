@@ -14,10 +14,10 @@ class CoordinateTest {
             "1/0, 1/1, 2/1",
             "-1/0, 1/1, 0/1"})
     void willTranslateLocationAppropriateToHeading(@ConvertWith(CoordinateConverter.class) Coordinate vector,
-                                                   @ConvertWith(CoordinateConverter.class) Coordinate initital,
+                                                   @ConvertWith(CoordinateConverter.class) Coordinate initial,
                                                    @ConvertWith(CoordinateConverter.class) Coordinate result) {
 
-        Coordinate actual = initital.apply(vector);
+        Coordinate actual = initial.apply(vector);
 
         assertThat(actual).isEqualTo(result);
     }

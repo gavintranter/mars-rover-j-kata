@@ -2,7 +2,7 @@ package uk.trantr.kata.marsroverj.navigation;
 
 import java.util.Objects;
 
-final class Coordinate {
+public final class Coordinate {
     private final int x;
     private final int y;
 
@@ -11,12 +11,12 @@ final class Coordinate {
         this.y = y;
     }
 
-    Coordinate apply(Coordinate vector) {
-        return new Coordinate(x + vector.x, y + vector.y);
+    public Coordinate inverse() {
+        return new Coordinate(x * -1, y * -1);
     }
 
-    Coordinate inverse() {
-        return new Coordinate(x * -1, y * -1);
+    Coordinate apply(Coordinate vector) {
+        return new Coordinate(x + vector.x, y + vector.y);
     }
 
     @Override

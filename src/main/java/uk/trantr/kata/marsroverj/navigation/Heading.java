@@ -4,48 +4,30 @@ public enum Heading {
     NORTH {
         @Override
         public Coordinate getVector() {
-            return new Coordinate(0, 1);
-        }
-
-        @Override
-        public Coordinate getReverseVector() {
-            return new Coordinate(0, -1);
+            return Y_VECTOR;
         }
     },
     EAST {
         @Override
         public Coordinate getVector() {
-            return new Coordinate(1, 0);
-        }
-
-        @Override
-        public Coordinate getReverseVector() {
-            return new Coordinate(-1, 0);
+            return X_VECTOR;
         }
     },
     SOUTH {
         @Override
         public Coordinate getVector() {
-            return new Coordinate(0, -1);
-        }
-
-        @Override
-        public Coordinate getReverseVector() {
-            return new Coordinate(0, 1);
+            return Y_VECTOR.inverse();
         }
     },
     WEST {
         @Override
         public Coordinate getVector() {
-            return new Coordinate(-1, 0);
-        }
-
-        @Override
-        public Coordinate getReverseVector() {
-            return new Coordinate(1, 0);
+            return X_VECTOR.inverse();
         }
     };
 
+    public static final Coordinate X_VECTOR = new Coordinate(1, 0);
+    public static final Coordinate Y_VECTOR = new Coordinate(0, 1);
+
     public abstract Coordinate getVector();
-    public abstract Coordinate getReverseVector();
 }
