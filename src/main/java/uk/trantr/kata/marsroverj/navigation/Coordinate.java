@@ -15,6 +15,10 @@ final class Coordinate {
         return new Coordinate(x + vector.x, y + vector.y);
     }
 
+    Coordinate inverse() {
+        return new Coordinate(x * -1, y * -1);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

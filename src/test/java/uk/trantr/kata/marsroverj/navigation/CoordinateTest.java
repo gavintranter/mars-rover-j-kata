@@ -21,4 +21,18 @@ class CoordinateTest {
 
         assertThat(actual).isEqualTo(result);
     }
+
+    @ParameterizedTest(name = "Case: {index} -> Vector {0} -> {1}")
+    @CsvSource({"0/0, 0/0",
+            "0/1, 0/-1",
+            "1/0, -1/0",
+            "12/0, -12/0",
+            "6/7, -6/-7"})
+    void willInvertVector(@ConvertWith(CoordinateConverter.class) Coordinate initial,
+                          @ConvertWith(CoordinateConverter.class) Coordinate result) {
+
+        Coordinate actual = initial.inverse();
+
+        assertThat(actual).isEqualTo(result);
+    }
 }
