@@ -51,4 +51,11 @@ class RoverTest {
 
         assertThat(rover).isEqualTo(new Rover(INITIAL_LOCATION));
     }
+
+    @Test
+    void willAbortWhenEncounteringUnknownCommand() {
+        rover.process("ffAff");
+
+        assertThat(rover).isEqualTo(new Rover(new Location(1, 3, NORTH)));
+    }
 }
