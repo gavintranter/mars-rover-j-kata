@@ -8,7 +8,7 @@ public enum Heading {
         }
 
         @Override
-        public Heading clockWise() {
+        public Heading clockwise() {
             return EAST;
         }
 
@@ -24,7 +24,7 @@ public enum Heading {
         }
 
         @Override
-        public Heading clockWise() {
+        public Heading clockwise() {
             return SOUTH;
         }
 
@@ -40,7 +40,7 @@ public enum Heading {
         }
 
         @Override
-        public Heading clockWise() {
+        public Heading clockwise() {
             return WEST;
         }
 
@@ -56,7 +56,7 @@ public enum Heading {
         }
 
         @Override
-        public Heading clockWise() {
+        public Heading clockwise() {
             return NORTH;
         }
 
@@ -71,7 +71,7 @@ public enum Heading {
 
     public abstract Coordinate getVector();
 
-    public abstract Heading clockWise();
+    public abstract Heading clockwise();
 
     public abstract Heading anticlockwise();
 }

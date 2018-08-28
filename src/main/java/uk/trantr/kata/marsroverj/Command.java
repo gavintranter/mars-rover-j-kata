@@ -19,7 +19,7 @@ enum Command {
     r {
         @Override
         public Location execute(Location location) {
-            return location.changeHeadingTo(location.getHeading().clockWise());
+            return location.changeHeadingTo(location.getHeading().clockwise());
         }
     },
     l {
