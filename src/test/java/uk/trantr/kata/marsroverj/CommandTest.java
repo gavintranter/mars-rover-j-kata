@@ -32,7 +32,7 @@ class CommandTest {
                                                    @ConvertWith(LocationConverter.class) Location initialLocation,
                                                    @ConvertWith(LocationConverter.class) Location finalLocation) {
 
-        Location actualLocation = Command.parse(symbol).executeAgainst(initialLocation);
+        Location actualLocation = Command.parse(symbol).execute(initialLocation);
 
         assertThat(actualLocation).isEqualTo(finalLocation);
     }

@@ -13,11 +13,11 @@ class CoordinateTest {
             "0/-1, 1/1, 1/0",
             "1/0, 1/1, 2/1",
             "-1/0, 1/1, 0/1"})
-    void willTranslateLocationAppropriateToHeading(@ConvertWith(CoordinateConverter.class) Coordinate vector,
-                                                   @ConvertWith(CoordinateConverter.class) Coordinate initial,
-                                                   @ConvertWith(CoordinateConverter.class) Coordinate result) {
+    void willAddCoordinates(@ConvertWith(CoordinateConverter.class) Coordinate newCoordinate,
+                            @ConvertWith(CoordinateConverter.class) Coordinate initial,
+                            @ConvertWith(CoordinateConverter.class) Coordinate result) {
 
-        Coordinate actual = initial.apply(vector);
+        Coordinate actual = initial.add(newCoordinate);
 
         assertThat(actual).isEqualTo(result);
     }
@@ -28,10 +28,10 @@ class CoordinateTest {
             "1/0, -1/0",
             "12/0, -12/0",
             "6/7, -6/-7"})
-    void willInvertVector(@ConvertWith(CoordinateConverter.class) Coordinate initial,
-                          @ConvertWith(CoordinateConverter.class) Coordinate result) {
+    void willInvertCoordinate(@ConvertWith(CoordinateConverter.class) Coordinate initial,
+                              @ConvertWith(CoordinateConverter.class) Coordinate result) {
 
-        Coordinate actual = initial.inverse();
+        Coordinate actual = initial.getInverse();
 
         assertThat(actual).isEqualTo(result);
     }

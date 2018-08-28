@@ -19,8 +19,8 @@ public final class Location {
         return heading;
     }
 
-    public Location apply(Coordinate vector) {
-        return new Location(coordinate.apply(vector), heading);
+    public Location applyVectorTo(Coordinate newCoordinate) {
+        return new Location(coordinate.add(newCoordinate), heading);
     }
 
     @Override

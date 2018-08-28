@@ -6,19 +6,19 @@ enum Command {
 
     f {
         @Override
-        public Location executeAgainst(Location location) {
-            return location.apply(location.getHeading().getVector());
+        public Location execute(Location location) {
+            return location.applyVectorTo(location.getHeading().getVector());
         }
     },
     b {
         @Override
-        public Location executeAgainst(Location location) {
-            return location.apply(location.getHeading().getVector().inverse());
+        public Location execute(Location location) {
+            return location.applyVectorTo(location.getHeading().getVector().getInverse());
         }
     },
     r {
         @Override
-        public Location executeAgainst(Location location) {
+        public Location execute(Location location) {
             return null;
         }
     };
@@ -27,5 +27,5 @@ enum Command {
         return valueOf(String.valueOf(((char)symbol)));
     }
 
-    public abstract Location executeAgainst(Location location);
+    public abstract Location execute(Location location);
 }

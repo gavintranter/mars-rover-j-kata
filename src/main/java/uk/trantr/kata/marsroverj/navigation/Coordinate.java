@@ -11,12 +11,12 @@ public final class Coordinate {
         this.y = y;
     }
 
-    public Coordinate inverse() {
+    public Coordinate getInverse() {
         return new Coordinate(x * -1, y * -1);
     }
 
-    Coordinate apply(Coordinate vector) {
-        return new Coordinate(x + vector.x, y + vector.y);
+    Coordinate add(Coordinate coordinate) {
+        return new Coordinate(x + coordinate.x, y + coordinate.y);
     }
 
     @Override

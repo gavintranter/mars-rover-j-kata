@@ -16,13 +16,13 @@ public enum Heading {
     SOUTH {
         @Override
         public Coordinate getVector() {
-            return Y_VECTOR.inverse();
+            return Y_VECTOR.getInverse();
         }
     },
     WEST {
         @Override
         public Coordinate getVector() {
-            return X_VECTOR.inverse();
+            return X_VECTOR.getInverse();
         }
     };
 
