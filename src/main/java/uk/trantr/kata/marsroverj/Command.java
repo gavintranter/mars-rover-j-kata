@@ -2,8 +2,6 @@ package uk.trantr.kata.marsroverj;
 
 import uk.trantr.kata.marsroverj.navigation.Location;
 
-import static uk.trantr.kata.marsroverj.navigation.Heading.EAST;
-
 enum Command {
 
     f {
@@ -21,7 +19,7 @@ enum Command {
     r {
         @Override
         public Location execute(Location location) {
-            return location.changeHeadingTo(EAST);
+            return location.changeHeadingTo(location.getHeading().clockWise());
         }
     };
 
