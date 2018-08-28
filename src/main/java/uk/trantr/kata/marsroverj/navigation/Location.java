@@ -23,6 +23,10 @@ public final class Location {
         return new Location(coordinate.add(newCoordinate), heading);
     }
 
+    public Location changeHeadingTo(Heading newHeading) {
+        return new Location(coordinate, newHeading);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
