@@ -11,6 +11,11 @@ public enum Heading {
         public Heading clockWise() {
             return EAST;
         }
+
+        @Override
+        public Heading anticlockwise() {
+            return WEST;
+        }
     },
     EAST {
         @Override
@@ -21,6 +26,11 @@ public enum Heading {
         @Override
         public Heading clockWise() {
             return SOUTH;
+        }
+
+        @Override
+        public Heading anticlockwise() {
+            return NORTH;
         }
     },
     SOUTH {
@@ -33,6 +43,11 @@ public enum Heading {
         public Heading clockWise() {
             return WEST;
         }
+
+        @Override
+        public Heading anticlockwise() {
+            return EAST;
+        }
     },
     WEST {
         @Override
@@ -44,6 +59,11 @@ public enum Heading {
         public Heading clockWise() {
             return NORTH;
         }
+
+        @Override
+        public Heading anticlockwise() {
+            return SOUTH;
+        }
     };
 
     public static final Coordinate X_VECTOR = new Coordinate(1, 0);
@@ -52,4 +72,6 @@ public enum Heading {
     public abstract Coordinate getVector();
 
     public abstract Heading clockWise();
+
+    public abstract Heading anticlockwise();
 }

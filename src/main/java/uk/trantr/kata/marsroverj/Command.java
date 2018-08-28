@@ -21,6 +21,12 @@ enum Command {
         public Location execute(Location location) {
             return location.changeHeadingTo(location.getHeading().clockWise());
         }
+    },
+    l {
+        @Override
+        public Location execute(Location location) {
+            return location.changeHeadingTo(location.getHeading().anticlockwise());
+        }
     };
 
     public static Command parse(int symbol) {
