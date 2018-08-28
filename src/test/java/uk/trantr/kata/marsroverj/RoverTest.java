@@ -15,7 +15,7 @@ class RoverTest {
 
     private static final Location INITIAL_LOCATION = new Location(1, 1, NORTH);
 
-    Rover rover;
+    private Rover rover;
 
     @BeforeEach
     void setUp() {
