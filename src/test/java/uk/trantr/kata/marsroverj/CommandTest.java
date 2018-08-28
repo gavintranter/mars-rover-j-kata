@@ -27,7 +27,8 @@ class CommandTest {
             "f, 1/1/EAST, 2/1/EAST",
             "b, 1/1/EAST, 0/1/EAST",
             "f, 1/1/WEST, 0/1/WEST",
-            "b, 1/1/WEST, 2/1/WEST"})
+            "b, 1/1/WEST, 2/1/WEST",
+            "r, 1/1/NORTH, 1/1/EAST"})
     void willTranslateLocationAppropriateToHeading(char symbol,
                                                    @ConvertWith(LocationConverter.class) Location initialLocation,
                                                    @ConvertWith(LocationConverter.class) Location finalLocation) {
