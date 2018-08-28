@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CoordinateTest {
 
-    @ParameterizedTest(name = "Case: {index} -> Vector {0} Will transform {1} to {2}")
+    @ParameterizedTest(name = "Case: {index} -> Vector {0} Will be transformed by {1} to give {2}")
     @CsvSource({"1/1, 0/1, 1/2",
                 "1/1, 0/-1, 1/0",
                 "1/1, 1/0, 2/1",
