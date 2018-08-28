@@ -14,7 +14,7 @@ class CommandTest {
 
     // The parameterised test cheat a little by taking advantage of the implicit char <-> int conversions
     @ParameterizedTest
-    @CsvSource({"f, f", "b, b", "r, r"})
+    @CsvSource({"f, f", "b, b", "r, r", "l, l"})
     void willParseKnownCommands(char symbol, Command expectedCommand) {
         assertThat(Command.parse(symbol)).isSameAs(expectedCommand);
     }
@@ -31,7 +31,11 @@ class CommandTest {
             "r, 1/1/NORTH, 1/1/EAST",
             "r, 1/1/EAST, 1/1/SOUTH",
             "r, 1/1/SOUTH, 1/1/WEST",
-            "r, 1/1/WEST, 1/1/NORTH"})
+            "r, 1/1/WEST, 1/1/NORTH",
+            "l, 1/1/NORTH, 1/1/WEST",
+            "l, 1/1/WEST, 1/1/SOUTH",
+            "l, 1/1/SOUTH, 1/1/EAST",
+            "l, 1/1/EAST, 1/1/NORTH"})
     void willTranslateLocationAppropriateToHeading(char symbol,
                                                    @ConvertWith(LocationConverter.class) Location initialLocation,
                                                    @ConvertWith(LocationConverter.class) Location finalLocation) {
