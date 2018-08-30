@@ -1,6 +1,7 @@
 package uk.trantr.kata.marsroverj.navigation;
 
 import java.util.Objects;
+import java.util.function.IntFunction;
 
 public final class Coordinate {
     private final int x;
@@ -13,6 +14,10 @@ public final class Coordinate {
 
     public Coordinate getInverse() {
         return new Coordinate(x * -1, y * -1);
+    }
+
+    Coordinate adjustBy(IntFunction<Integer> xAdjustment, IntFunction<Integer> yAdjustment) {
+        return new Coordinate(xAdjustment.apply(x), yAdjustment.apply(y));
     }
 
     Coordinate add(Coordinate coordinate) {

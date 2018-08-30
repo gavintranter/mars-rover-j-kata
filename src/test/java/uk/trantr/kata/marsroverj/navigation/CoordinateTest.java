@@ -1,5 +1,6 @@
 package uk.trantr.kata.marsroverj.navigation;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -34,5 +35,15 @@ class CoordinateTest {
         Coordinate actual = initial.getInverse();
 
         assertThat(actual).isEqualTo(result);
+    }
+
+    @Test
+    void willAdjustCoordinate() {
+        Coordinate initial = new Coordinate(1, 1);
+        Coordinate expected = new Coordinate(2, 3);
+
+        Coordinate actual = initial.adjustBy(x -> x + 1, y -> y + 2);
+
+        assertThat(actual).isEqualTo(expected);
     }
 }
