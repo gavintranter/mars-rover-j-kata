@@ -20,14 +20,14 @@ class RoverTest {
     private static final Location INITIAL_LOCATION = new Location(1, 1, NORTH);
 
     private Rover rover;
-    private NavigationChart chart;
 
     @BeforeEach
     void setUp() {
         Set<Coordinate> obstacles = new HashSet<>();
         obstacles.add(new Coordinate(2, 2));
 
-        chart = new NavigationChart(4, 4, obstacles);
+        NavigationChart chart = new NavigationChart(4, 4, obstacles);
+
         rover = new Rover(INITIAL_LOCATION, chart);
     }
 
@@ -39,34 +39,34 @@ class RoverTest {
     void roverTravelInASquareShapeReturningToItsOrigin(String commandSequence) {
         rover.process(commandSequence);
 
-        assertThat(rover).isEqualTo(new Rover(INITIAL_LOCATION, chart));
+        assertThat(rover.reportLocation()).isEqualTo(INITIAL_LOCATION);
     }
 
     @Test
     void willGoOnMoreComplexJourneyReturningToOrigin() {
         rover.process("ffrfflfflffr");
 
-        assertThat(rover).isEqualTo(new Rover(INITIAL_LOCATION, chart));
+        assertThat(rover.reportLocation()).isEqualTo(INITIAL_LOCATION);
     }
 
     @Test
     void willAbortWhenEncounteringUnknownCommand() {
         rover.process("ffAff");
 
-        assertThat(rover).isEqualTo(new Rover(new Location(1, 3, NORTH), chart));
+        assertThat(rover.reportLocation()).isEqualTo(new Location(1, 3, NORTH));
     }
 
     @Test
     void willCircumnavigation() {
         rover.process("ffff");
 
-        assertThat(rover).isEqualTo(new Rover(new Location(1, 1, NORTH), chart));
+        assertThat(rover.reportLocation()).isEqualTo(new Location(1, 1, NORTH));
     }
 
     @Test
     void willStopParsingCommandsWhenObstacleReached() {
         rover.process("frflfrf");
 
-        assertThat(rover).isEqualTo(new Rover(new Location(1, 2, EAST), chart));
+        assertThat(rover.reportLocation()).isEqualTo(new Location(1, 2, EAST));
     }
 }

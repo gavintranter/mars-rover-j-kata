@@ -32,6 +32,10 @@ public final class Rover {
         }
     }
 
+    public Location reportLocation() {
+        return location;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
