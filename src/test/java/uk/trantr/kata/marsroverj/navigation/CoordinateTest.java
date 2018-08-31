@@ -23,20 +23,6 @@ class CoordinateTest {
         assertThat(actual).isEqualTo(result);
     }
 
-    @ParameterizedTest(name = "Case: {index} -> Vector {0} -> {1}")
-    @CsvSource({"0/0, 0/0",
-                "0/1, 0/-1",
-                "1/0, -1/0",
-                "12/0, -12/0",
-                "6/7, -6/-7"})
-    void willInvertCoordinate(@ConvertWith(CoordinateConverter.class) Coordinate initial,
-                              @ConvertWith(CoordinateConverter.class) Coordinate result) {
-
-        Coordinate actual = initial.getInverse();
-
-        assertThat(actual).isEqualTo(result);
-    }
-
     @Test
     void willAdjustCoordinate() {
         Coordinate initial = new Coordinate(1, 1);

@@ -13,7 +13,7 @@ enum Command {
     b {
         @Override
         public Location execute(Location location) {
-            return location.moveTo(location.getHeading().getVector().getInverse());
+            return location.moveTo(location.getHeading().getVector().adjustBy(x -> x * -1, y -> y * -1));
         }
     },
     r {

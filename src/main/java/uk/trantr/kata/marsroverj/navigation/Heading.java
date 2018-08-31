@@ -1,5 +1,7 @@
 package uk.trantr.kata.marsroverj.navigation;
 
+import java.util.function.IntFunction;
+
 public enum Heading {
     NORTH {
         @Override
@@ -36,7 +38,7 @@ public enum Heading {
     SOUTH {
         @Override
         public Coordinate getVector() {
-            return Y_VECTOR.getInverse();
+            return Y_VECTOR.adjustBy(INVERT_FUNCTION, INVERT_FUNCTION);
         }
 
         @Override
@@ -52,7 +54,7 @@ public enum Heading {
     WEST {
         @Override
         public Coordinate getVector() {
-            return X_VECTOR.getInverse();
+            return X_VECTOR.adjustBy(INVERT_FUNCTION, INVERT_FUNCTION);
         }
 
         @Override
@@ -66,6 +68,7 @@ public enum Heading {
         }
     };
 
+    public static final IntFunction<Integer> INVERT_FUNCTION = v -> v * -1;
     public static final Coordinate X_VECTOR = new Coordinate(1, 0);
     public static final Coordinate Y_VECTOR = new Coordinate(0, 1);
 

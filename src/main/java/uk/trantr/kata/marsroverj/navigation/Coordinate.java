@@ -12,11 +12,7 @@ public final class Coordinate {
         this.y = y;
     }
 
-    public Coordinate getInverse() {
-        return new Coordinate(x * -1, y * -1);
-    }
-
-    Coordinate adjustBy(IntFunction<Integer> xAdjustment, IntFunction<Integer> yAdjustment) {
+    public Coordinate adjustBy(IntFunction<Integer> xAdjustment, IntFunction<Integer> yAdjustment) {
         return new Coordinate(xAdjustment.apply(x), yAdjustment.apply(y));
     }
 
