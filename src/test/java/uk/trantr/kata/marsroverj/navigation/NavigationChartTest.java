@@ -10,10 +10,10 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class MapTest {
+class NavigationChartTest {
 
     private final Set<Coordinate> obstacles = new HashSet<>();
-    private final Map map = new Map(5, 4, obstacles);
+    private final NavigationChart navigationChart = new NavigationChart(5, 4, obstacles);
 
     @ParameterizedTest(name = "Case: {index} -> Will adjust {0} to {1}")
     @CsvSource({"1/5, 1/1",
@@ -25,7 +25,7 @@ class MapTest {
     void willAdjustOnlyCoordinateBeyondExtents(@ConvertWith(CoordinateConverter.class) Coordinate newTopCoordinate,
                                            @ConvertWith(CoordinateConverter.class) Coordinate expectedBottomCoordinate) {
 
-        Coordinate adjustedCoordinate = map.moveTo(newTopCoordinate);
+        Coordinate adjustedCoordinate = navigationChart.moveTo(newTopCoordinate);
 
         assertThat(adjustedCoordinate).isEqualTo(expectedBottomCoordinate);
     }
@@ -34,7 +34,7 @@ class MapTest {
     void willReportCoordinateIsFreeOfDanger() {
         Coordinate coordinate = new Coordinate(1, 1);
 
-        boolean result = map.isSafe(coordinate);
+        boolean result = navigationChart.isSafe(coordinate);
 
         assertThat(result).isTrue();
     }
@@ -44,7 +44,7 @@ class MapTest {
         obstacles.add(new Coordinate(1, 1));
         Coordinate coordinate = new Coordinate(1, 1);
 
-        boolean result = map.isSafe(coordinate);
+        boolean result = navigationChart.isSafe(coordinate);
 
         assertThat(result).isFalse();
     }
