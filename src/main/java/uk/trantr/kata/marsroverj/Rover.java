@@ -18,20 +18,24 @@ public final class Rover {
     public void process(String commandSequence) {
         try {
              commandSequence.chars()
-                     .mapToObj(command -> Command.parse(command).execute(location))
-                     .map(location -> {
-                            Coordinate coordinate = chart.moveTo(location.getCoordinate());
-                            return new Location(coordinate, location.getHeading());
-                        })
-                     .takeWhile(location -> chart.isSafe(location.getCoordinate()))
-                     .forEach(newLocation -> location = newLocation);
-        } catch (IllegalArgumentException e) {
+                 .mapToObj(command -> Command.parse(command).execute(location))
+                 .map(this::determineLocation)
+                 .takeWhile(location -> chart.isSafe(location.getCoordinate()))
+                 .forEach(newLocation -> location = newLocation);
+        }
+        catch (IllegalArgumentException e) {
             // Ignore unknown commands
         }
     }
 
     public Location reportLocation() {
         return location;
+    }
+
+    private Location determineLocation(Location location) {
+        Coordinate coordinate = chart.moveTo(location.getCoordinate());
+
+        return new Location(coordinate, location.getHeading());
     }
 
     @Override

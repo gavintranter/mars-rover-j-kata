@@ -4,6 +4,9 @@ import uk.trantr.kata.marsroverj.navigation.Location;
 
 enum Command {
 
+    // Using unorthodox naming to reduce code required to determine invalid commands.
+    // This removes the need for a list of the uppercase commands to be considered invalid,
+    // allowing this enum to represent all the valid commands.
     f {
         @Override
         public Location execute(Location location) {
