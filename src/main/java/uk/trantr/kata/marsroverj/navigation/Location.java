@@ -19,7 +19,7 @@ public final class Location {
         return heading;
     }
 
-    public Location applyVectorTo(Coordinate newCoordinate) {
+    public Location moveTo(Coordinate newCoordinate) {
         return new Location(coordinate.add(newCoordinate), heading);
     }
 
