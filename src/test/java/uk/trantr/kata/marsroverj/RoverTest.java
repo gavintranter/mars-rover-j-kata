@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static uk.trantr.kata.marsroverj.navigation.Heading.EAST;
 import static uk.trantr.kata.marsroverj.navigation.Heading.NORTH;
 
 class RoverTest {
@@ -24,9 +25,9 @@ class RoverTest {
     @BeforeEach
     void setUp() {
         Set<Coordinate> obstacles = new HashSet<>();
-        obstacles.add(new Coordinate(2, 1));
+        obstacles.add(new Coordinate(2, 2));
 
-        chart = new NavigationChart(2, 4, obstacles);
+        chart = new NavigationChart(4, 4, obstacles);
         rover = new Rover(INITIAL_LOCATION, chart);
     }
 
@@ -43,7 +44,7 @@ class RoverTest {
 
     @Test
     void willGoOnMoreComplexJourneyReturningToOrigin() {
-        rover.process("frflfrflfrfrffbrflffrffr");
+        rover.process("ffrfflfflffr");
 
         assertThat(rover).isEqualTo(new Rover(INITIAL_LOCATION, chart));
     }
@@ -60,5 +61,12 @@ class RoverTest {
         rover.process("ffff");
 
         assertThat(rover).isEqualTo(new Rover(new Location(1, 1, NORTH), chart));
+    }
+
+    @Test
+    void willStopParsingCommandsWhenObstacleReached() {
+        rover.process("frflfrf");
+
+        assertThat(rover).isEqualTo(new Rover(new Location(1, 2, EAST), chart));
     }
 }

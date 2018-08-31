@@ -21,6 +21,10 @@ public final class Rover {
                 Location suggestedLocation = Command.parse(c).execute(location);
                 Coordinate suggestedCoordinate = chart.moveTo(suggestedLocation.getCoordinate());
 
+                if (!chart.isSafe(suggestedCoordinate)) {
+                    break;
+                }
+
                 location = new Location(suggestedCoordinate, suggestedLocation.getHeading());
             }
         } catch (IllegalArgumentException e) {
