@@ -10,13 +10,17 @@ public final class Location {
         this(new Coordinate(x, y), heading);
     }
 
-    private Location(Coordinate coordinate, Heading heading) {
+    public Location(Coordinate coordinate, Heading heading) {
         this.coordinate = coordinate;
         this.heading = heading;
     }
 
     public Heading getHeading() {
         return heading;
+    }
+
+    public Coordinate getCoordinate() {
+        return coordinate;
     }
 
     public Location moveTo(Coordinate newCoordinate) {

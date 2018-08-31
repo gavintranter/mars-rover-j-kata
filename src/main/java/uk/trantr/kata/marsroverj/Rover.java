@@ -1,20 +1,28 @@
 package uk.trantr.kata.marsroverj;
 
+import uk.trantr.kata.marsroverj.navigation.Coordinate;
 import uk.trantr.kata.marsroverj.navigation.Location;
+import uk.trantr.kata.marsroverj.navigation.NavigationChart;
 
 import java.util.Objects;
 
 public final class Rover {
     private Location location;
+    private final NavigationChart chart;
 
-    public Rover(Location location) {
+    public Rover(Location location, NavigationChart chart) {
         this.location = location;
+        this.chart = chart;
     }
 
     public void process(String commandSequence) {
         try {
-            commandSequence.chars()
-                    .forEach(c -> location = Command.parse(c).execute(location));
+            for (char c : commandSequence.toCharArray()) {
+                Location suggestedLocation = Command.parse(c).execute(location);
+                Coordinate suggestedCoordinate = chart.moveTo(suggestedLocation.getCoordinate());
+
+                location = new Location(suggestedCoordinate, suggestedLocation.getHeading());
+            }
         } catch (IllegalArgumentException e) {
             // Ignore unknown commands
         }
