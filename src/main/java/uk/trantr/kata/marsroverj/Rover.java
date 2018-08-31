@@ -17,16 +17,14 @@ public final class Rover {
 
     public void process(String commandSequence) {
         try {
-            for (char c : commandSequence.toCharArray()) {
-                Location suggestedLocation = Command.parse(c).execute(location);
-                Coordinate suggestedCoordinate = chart.moveTo(suggestedLocation.getCoordinate());
-
-                if (!chart.isSafe(suggestedCoordinate)) {
-                    break;
-                }
-
-                location = new Location(suggestedCoordinate, suggestedLocation.getHeading());
-            }
+             commandSequence.chars()
+                     .mapToObj(command -> Command.parse(command).execute(location))
+                     .map(location -> {
+                            Coordinate coordinate = chart.moveTo(location.getCoordinate());
+                            return new Location(coordinate, location.getHeading());
+                        })
+                     .takeWhile(location -> chart.isSafe(location.getCoordinate()))
+                     .forEach(newLocation -> location = newLocation);
         } catch (IllegalArgumentException e) {
             // Ignore unknown commands
         }
