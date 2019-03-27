@@ -55,4 +55,13 @@ public class NavigationChart {
         result = (31 * result) + ((obstacles != null) ? obstacles.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "NavigationChart{" +
+                "obstacles=" + obstacles +
+                ", longitudeAdjustment=" + longitudeAdjustment +
+                ", latitudeAdjustment=" + latitudeAdjustment +
+                "}";
+    }
 }
