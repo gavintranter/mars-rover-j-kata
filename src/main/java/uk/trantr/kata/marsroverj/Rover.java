@@ -41,9 +41,12 @@ public final class Rover {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if ((o == null) || (getClass() != o.getClass())) return false;
+        if (!(o instanceof Rover)) return false;
+
         Rover rover = (Rover) o;
-        return Objects.equals(location, rover.location);
+
+        if (!location.equals(rover.location)) return false;
+        return chart.equals(rover.chart);
     }
 
     @Override
