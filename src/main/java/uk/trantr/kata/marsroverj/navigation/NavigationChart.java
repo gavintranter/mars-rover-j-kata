@@ -1,5 +1,6 @@
 package uk.trantr.kata.marsroverj.navigation;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.IntFunction;
 
@@ -29,5 +30,29 @@ public class NavigationChart {
 
     public boolean isSafe(Coordinate coordinate) {
         return !(obstacles.contains(coordinate));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof NavigationChart)) return false;
+
+        NavigationChart that = (NavigationChart) o;
+
+        if (!Objects.equals(latitudeAdjustment, that.latitudeAdjustment)) {
+            return false;
+        }
+        if (!Objects.equals(longitudeAdjustment, that.longitudeAdjustment)) {
+            return false;
+        }
+        return Objects.equals(obstacles, that.obstacles);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (latitudeAdjustment != null) ? latitudeAdjustment.hashCode() : 0;
+        result = (31 * result) + ((longitudeAdjustment != null) ? longitudeAdjustment.hashCode() : 0);
+        result = (31 * result) + ((obstacles != null) ? obstacles.hashCode() : 0);
+        return result;
     }
 }
