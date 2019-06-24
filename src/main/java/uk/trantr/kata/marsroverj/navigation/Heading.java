@@ -68,9 +68,9 @@ public enum Heading {
         }
     };
 
-    public static final IntFunction<Integer> INVERT_FUNCTION = v -> v * -1;
-    public static final Coordinate X_VECTOR = new Coordinate(1, 0);
-    public static final Coordinate Y_VECTOR = new Coordinate(0, 1);
+    private static final IntFunction<Integer> INVERT_FUNCTION = v -> v * -1;
+    private static final Coordinate X_VECTOR = new Coordinate(1, 0);
+    private static final Coordinate Y_VECTOR = new Coordinate(0, 1);
 
     public abstract Coordinate getVector();
 
