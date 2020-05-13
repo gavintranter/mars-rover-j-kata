@@ -32,7 +32,7 @@ class NavigationChartTest {
 
     @Test
     void willReportCoordinateIsFreeOfDanger() {
-        Coordinate coordinate = Coordinate.at(1, 1);
+        Coordinate coordinate = Coordinate.ONE_ONE;
 
         boolean result = navigationChart.isSafe(coordinate);
 
@@ -41,8 +41,8 @@ class NavigationChartTest {
 
     @Test
     void willReportCoordinateIsNotFreeOfDanger() {
-        obstacles.add(Coordinate.at(1, 1));
-        Coordinate coordinate = Coordinate.at(1, 1);
+        obstacles.add(Coordinate.ONE_ONE);
+        Coordinate coordinate = Coordinate.ONE_ONE;
 
         boolean result = navigationChart.isSafe(coordinate);
 
