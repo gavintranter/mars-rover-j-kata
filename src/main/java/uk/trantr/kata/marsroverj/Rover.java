@@ -19,7 +19,7 @@ public final class Rover {
              commandSequence.chars()
                  .mapToObj(command -> Command.parse(command).execute(location))
                  .map(chart::determineActualLocation)
-                 .takeWhile(location -> chart.isSafe(location.getCoordinate()))
+                 .takeWhile(chart::isSafe)
                  .forEach(newLocation -> location = newLocation);
         }
         catch (IllegalArgumentException e) {

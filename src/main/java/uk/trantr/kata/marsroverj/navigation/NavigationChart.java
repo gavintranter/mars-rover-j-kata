@@ -28,8 +28,8 @@ public class NavigationChart {
         return new Location(location.getCoordinate().adjustBy(latitudeAdjustment, longitudeAdjustment), location.getHeading());
     }
 
-    public boolean isSafe(Coordinate coordinate) {
-        return !(obstacles.contains(coordinate));
+    public boolean isSafe(Location location) {
+        return !(obstacles.contains(location.getCoordinate()));
     }
 
     @Override

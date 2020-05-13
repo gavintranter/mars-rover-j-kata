@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static uk.trantr.kata.marsroverj.navigation.Heading.NORTH;
 
 class NavigationChartTest {
 
@@ -32,9 +33,9 @@ class NavigationChartTest {
 
     @Test
     void willReportCoordinateIsFreeOfDanger() {
-        Coordinate coordinate = Coordinate.ONE_ONE;
+        Location location = new Location(Coordinate.ONE_ONE, NORTH);
 
-        boolean result = navigationChart.isSafe(coordinate);
+        boolean result = navigationChart.isSafe(location);
 
         assertThat(result).isTrue();
     }
@@ -42,9 +43,9 @@ class NavigationChartTest {
     @Test
     void willReportCoordinateIsNotFreeOfDanger() {
         obstacles.add(Coordinate.ONE_ONE);
-        Coordinate coordinate = Coordinate.ONE_ONE;
+        Location location = new Location(Coordinate.ONE_ONE, NORTH);
 
-        boolean result = navigationChart.isSafe(coordinate);
+        boolean result = navigationChart.isSafe(location);
 
         assertThat(result).isFalse();
     }
