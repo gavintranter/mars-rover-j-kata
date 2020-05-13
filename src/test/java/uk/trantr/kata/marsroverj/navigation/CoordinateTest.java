@@ -32,4 +32,16 @@ class CoordinateTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    void willReuseCommonCoordinates() {
+        Coordinate a = Coordinate.ZER0_ZERO;
+        Coordinate b = Coordinate.at(0, 0);
+
+        Coordinate y = Coordinate.ONE_ONE;
+        Coordinate z = Coordinate.at(1, 1);
+
+        assertThat(a == b).isTrue();
+        assertThat(y == z).isTrue();
+    }
 }

@@ -4,8 +4,23 @@ import java.util.Objects;
 import java.util.function.IntFunction;
 
 public final class Coordinate {
+    public static final Coordinate ZER0_ZERO = new Coordinate(0, 0);
+    public static final Coordinate ONE_ONE = new Coordinate(1, 1);
+
     private final int x;
     private final int y;
+
+    public static Coordinate at(int x, int y) {
+        if ((x == 0) && (y == 0)) {
+            return ZER0_ZERO;
+        }
+
+        if ((x == 1) && (y == 1)) {
+            return ONE_ONE;
+        }
+
+        return new Coordinate(x, y);
+    }
 
     public Coordinate(int x, int y) {
         this.x = x;
