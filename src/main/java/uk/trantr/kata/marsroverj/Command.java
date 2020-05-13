@@ -2,6 +2,8 @@ package uk.trantr.kata.marsroverj;
 
 import uk.trantr.kata.marsroverj.navigation.Location;
 
+import static uk.trantr.kata.marsroverj.navigation.Heading.INVERT_FUNCTION;
+
 enum Command {
 
     // Using unorthodox naming to reduce code required to determine invalid commands.
@@ -16,7 +18,7 @@ enum Command {
     b {
         @Override
         public Location execute(Location location) {
-            return location.moveTo(location.getHeading().getVector().adjustBy(x -> x * -1, y -> y * -1));
+            return location.moveTo(location.getHeading().getVector().adjustBy(INVERT_FUNCTION, INVERT_FUNCTION));
         }
     },
     r {
