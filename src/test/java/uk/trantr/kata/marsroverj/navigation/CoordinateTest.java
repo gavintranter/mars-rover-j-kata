@@ -25,8 +25,8 @@ class CoordinateTest {
 
     @Test
     void willAdjustCoordinate() {
-        Coordinate initial = new Coordinate(1, 1);
-        Coordinate expected = new Coordinate(2, 3);
+        Coordinate initial = Coordinate.at(1, 1);
+        Coordinate expected = Coordinate.at(2, 3);
 
         Coordinate actual = initial.adjustBy(x -> x + 1, y -> y + 2);
 

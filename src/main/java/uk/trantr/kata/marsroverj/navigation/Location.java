@@ -7,7 +7,7 @@ public final class Location {
     private final Heading heading;
 
     public Location(int x, int y, Heading heading) {
-        this(new Coordinate(x, y), heading);
+        this(Coordinate.at(x, y), heading);
     }
 
     public Location(Coordinate coordinate, Heading heading) {

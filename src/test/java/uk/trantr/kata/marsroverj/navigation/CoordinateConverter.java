@@ -18,7 +18,7 @@ public class CoordinateConverter implements ArgumentConverter {
             int x = Integer.parseInt(split[0]);
             int y = Integer.parseInt(split[1]);
 
-            return new Coordinate(x, y);
+            return Coordinate.at(x, y);
         }
 
         throw new ArgumentConversionException(source + " is not a valid coordinate");

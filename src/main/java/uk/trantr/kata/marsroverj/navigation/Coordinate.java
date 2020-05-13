@@ -22,7 +22,7 @@ public final class Coordinate {
         return new Coordinate(x, y);
     }
 
-    public Coordinate(int x, int y) {
+    private Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
     }

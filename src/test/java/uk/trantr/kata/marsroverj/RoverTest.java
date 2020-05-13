@@ -24,7 +24,7 @@ class RoverTest {
     @BeforeEach
     void setUp() {
         Set<Coordinate> obstacles = new HashSet<>();
-        obstacles.add(new Coordinate(2, 2));
+        obstacles.add(Coordinate.at(2, 2));
 
         NavigationChart chart = new NavigationChart(4, 4, obstacles);
 
