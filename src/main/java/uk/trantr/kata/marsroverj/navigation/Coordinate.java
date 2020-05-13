@@ -39,7 +39,7 @@ public final class Coordinate {
         this.y = y;
     }
 
-    public Coordinate adjustBy(IntFunction<Integer> xAdjustment, IntFunction<Integer> yAdjustment) {
+    Coordinate adjustBy(IntFunction<Integer> xAdjustment, IntFunction<Integer> yAdjustment) {
         return new Coordinate(xAdjustment.apply(x), yAdjustment.apply(y));
     }
 
