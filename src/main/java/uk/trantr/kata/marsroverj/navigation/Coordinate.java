@@ -16,7 +16,7 @@ public final class Coordinate {
         return new Coordinate(xAdjustment.apply(x), yAdjustment.apply(y));
     }
 
-    Coordinate add(Coordinate coordinate) {
+    Coordinate plus(Coordinate coordinate) {
         return new Coordinate(x + coordinate.x, y + coordinate.y);
     }
 

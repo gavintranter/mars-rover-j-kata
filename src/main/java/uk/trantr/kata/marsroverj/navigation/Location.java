@@ -24,7 +24,7 @@ public final class Location {
     }
 
     public Location moveTo(Coordinate newCoordinate) {
-        return new Location(coordinate.add(newCoordinate), heading);
+        return new Location(coordinate.plus(newCoordinate), heading);
     }
 
     public Location changeHeadingTo(Heading newHeading) {

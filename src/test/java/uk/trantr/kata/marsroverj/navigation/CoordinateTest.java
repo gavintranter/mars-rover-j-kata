@@ -18,7 +18,7 @@ class CoordinateTest {
                             @ConvertWith(CoordinateConverter.class) Coordinate newCoordinate,
                             @ConvertWith(CoordinateConverter.class) Coordinate result) {
 
-        Coordinate actual = initial.add(newCoordinate);
+        Coordinate actual = initial.plus(newCoordinate);
 
         assertThat(actual).isEqualTo(result);
     }
