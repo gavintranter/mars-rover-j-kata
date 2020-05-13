@@ -38,10 +38,18 @@ class CoordinateTest {
         Coordinate a = Coordinate.ZER0_ZERO;
         Coordinate b = Coordinate.at(0, 0);
 
-        Coordinate y = Coordinate.ONE_ONE;
-        Coordinate z = Coordinate.at(1, 1);
+        Coordinate c = Coordinate.ZERO_ONE;
+        Coordinate d = Coordinate.at(0, 1);
+
+        Coordinate e = Coordinate.ONE_ZERO;
+        Coordinate f = Coordinate.at(1, 0);
+
+        Coordinate g = Coordinate.ONE_ONE;
+        Coordinate h = Coordinate.at(1, 1);
 
         assertThat(a == b).isTrue();
-        assertThat(y == z).isTrue();
+        assertThat(c == d).isTrue();
+        assertThat(e == f).isTrue();
+        assertThat(g == h).isTrue();
     }
 }

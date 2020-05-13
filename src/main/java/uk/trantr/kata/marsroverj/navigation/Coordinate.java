@@ -6,17 +6,29 @@ import java.util.function.IntFunction;
 public final class Coordinate {
     public static final Coordinate ZER0_ZERO = new Coordinate(0, 0);
     public static final Coordinate ONE_ONE = new Coordinate(1, 1);
+    public static final Coordinate ZERO_ONE = new Coordinate(0, 1);
+    public static final Coordinate ONE_ZERO = new Coordinate(1, 0);
 
     private final int x;
     private final int y;
 
     public static Coordinate at(int x, int y) {
-        if ((x == 0) && (y == 0)) {
-            return ZER0_ZERO;
+        if ((x == 0)) {
+            if (y == 0) {
+                return ZER0_ZERO;
+            }
+            else if (y == 1) {
+                return ZERO_ONE;
+            }
         }
 
-        if ((x == 1) && (y == 1)) {
-            return ONE_ONE;
+        if ((x == 1)) {
+            if (y == 0) {
+                return ONE_ZERO;
+            }
+            else if (y == 1) {
+                return ONE_ONE;
+            }
         }
 
         return new Coordinate(x, y);
