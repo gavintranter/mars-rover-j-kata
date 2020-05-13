@@ -25,10 +25,6 @@ public final class Location {
         return coordinate;
     }
 
-    public Location moveTo(Coordinate newCoordinate) {
-        return new Location(coordinate.plus(newCoordinate), heading);
-    }
-
     public Location forward() {
         return new Location(coordinate.plus(heading.getVector()), heading);
     }
