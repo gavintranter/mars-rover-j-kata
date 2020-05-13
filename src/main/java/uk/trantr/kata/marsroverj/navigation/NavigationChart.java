@@ -24,8 +24,8 @@ public class NavigationChart {
         this.obstacles = obstacles;
     }
 
-    public Coordinate moveTo(Coordinate newNorthernCoordinate) {
-        return newNorthernCoordinate.adjustBy(latitudeAdjustment, longitudeAdjustment);
+    public Location determineActualLocation(Location location) {
+        return new Location(location.getCoordinate().adjustBy(latitudeAdjustment, longitudeAdjustment), location.getHeading());
     }
 
     public boolean isSafe(Coordinate coordinate) {

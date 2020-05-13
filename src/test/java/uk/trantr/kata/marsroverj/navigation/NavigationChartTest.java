@@ -16,18 +16,18 @@ class NavigationChartTest {
     private final NavigationChart navigationChart = new NavigationChart(5, 4, obstacles);
 
     @ParameterizedTest(name = "Case: {index} -> Will adjust {0} to {1}")
-    @CsvSource({"1/5, 1/1",
-                "1/3, 1/3",
-                "1/0, 1/4",
-                "6/1, 1/1",
-                "3/1, 3/1",
-                "0/1, 5/1"})
-    void willAdjustOnlyCoordinateBeyondExtents(@ConvertWith(CoordinateConverter.class) Coordinate newTopCoordinate,
-                                           @ConvertWith(CoordinateConverter.class) Coordinate expectedBottomCoordinate) {
+    @CsvSource({"1/5/NORTH, 1/1/NORTH",
+                "1/3/SOUTH, 1/3/SOUTH",
+                "1/0/WEST, 1/4/WEST",
+                "6/1/EAST, 1/1/EAST",
+                "3/1/EAST, 3/1/EAST",
+                "0/1/EAST, 5/1/EAST"})
+    void willAdjustOnlyCoordinateBeyondExtents(@ConvertWith(LocationConverter.class) Location newLocation,
+                                           @ConvertWith(LocationConverter.class) Location expectedCoordinate) {
 
-        Coordinate adjustedCoordinate = navigationChart.moveTo(newTopCoordinate);
+        Location adjustedLocation = navigationChart.determineActualLocation(newLocation);
 
-        assertThat(adjustedCoordinate).isEqualTo(expectedBottomCoordinate);
+        assertThat(adjustedLocation).isEqualTo(expectedCoordinate);
     }
 
     @Test

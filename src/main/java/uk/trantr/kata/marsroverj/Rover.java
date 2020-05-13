@@ -1,6 +1,5 @@
 package uk.trantr.kata.marsroverj;
 
-import uk.trantr.kata.marsroverj.navigation.Coordinate;
 import uk.trantr.kata.marsroverj.navigation.Location;
 import uk.trantr.kata.marsroverj.navigation.NavigationChart;
 
@@ -19,7 +18,7 @@ public final class Rover {
         try {
              commandSequence.chars()
                  .mapToObj(command -> Command.parse(command).execute(location))
-                 .map(this::determineLocation)
+                 .map(chart::determineActualLocation)
                  .takeWhile(location -> chart.isSafe(location.getCoordinate()))
                  .forEach(newLocation -> location = newLocation);
         }
@@ -30,12 +29,6 @@ public final class Rover {
 
     public Location reportLocation() {
         return location;
-    }
-
-    private Location determineLocation(Location location) {
-        Coordinate coordinate = chart.moveTo(location.getCoordinate());
-
-        return new Location(coordinate, location.getHeading());
     }
 
     @Override
