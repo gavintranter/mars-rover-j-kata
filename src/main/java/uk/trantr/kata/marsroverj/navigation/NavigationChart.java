@@ -35,7 +35,9 @@ public class NavigationChart {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof NavigationChart)) return false;
+        if (!(o instanceof NavigationChart)) {
+            return false;
+        }
 
         NavigationChart that = (NavigationChart) o;
 
@@ -50,8 +52,8 @@ public class NavigationChart {
 
     @Override
     public int hashCode() {
-        int result = (latitudeAdjustment != null) ? latitudeAdjustment.hashCode() : 0;
-        result = (31 * result) + ((longitudeAdjustment != null) ? longitudeAdjustment.hashCode() : 0);
+        int result = latitudeAdjustment.hashCode();
+        result = (31 * result) + longitudeAdjustment.hashCode();
         result = (31 * result) + ((obstacles != null) ? obstacles.hashCode() : 0);
         return result;
     }

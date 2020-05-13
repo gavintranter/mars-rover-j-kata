@@ -7,8 +7,8 @@ import uk.trantr.kata.marsroverj.navigation.NavigationChart;
 import java.util.Objects;
 
 public final class Rover {
-    private Location location;
     private final NavigationChart chart;
+    private Location location;
 
     public Rover(Location location, NavigationChart chart) {
         this.location = location;
@@ -41,11 +41,15 @@ public final class Rover {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Rover)) return false;
+        if (!(o instanceof Rover)) {
+            return false;
+        }
 
         Rover rover = (Rover) o;
 
-        if (!location.equals(rover.location)) return false;
+        if (!location.equals(rover.location)) {
+            return false;
+        }
         return chart.equals(rover.chart);
     }
 

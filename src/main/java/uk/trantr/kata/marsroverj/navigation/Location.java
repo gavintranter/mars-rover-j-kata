@@ -34,10 +34,12 @@ public final class Location {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if ((o == null) || (getClass() != o.getClass())) return false;
+        if ((o == null) || (getClass() != o.getClass())) {
+            return false;
+        }
+
         Location location = (Location) o;
-        return (heading == location.heading) &&
-                Objects.equals(coordinate, location.coordinate);
+        return (heading == location.heading) && Objects.equals(coordinate, location.coordinate);
     }
 
     @Override
