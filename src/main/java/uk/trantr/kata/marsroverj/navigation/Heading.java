@@ -6,7 +6,7 @@ public enum Heading {
     NORTH {
         @Override
         public Coordinate getVector() {
-            return Y_VECTOR;
+            return P_Y_VECTOR;
         }
 
         @Override
@@ -22,7 +22,7 @@ public enum Heading {
     EAST {
         @Override
         public Coordinate getVector() {
-            return X_VECTOR;
+            return P_X_VECTOR;
         }
 
         @Override
@@ -38,7 +38,7 @@ public enum Heading {
     SOUTH {
         @Override
         public Coordinate getVector() {
-            return Y_VECTOR.adjustBy(INVERT_FUNCTION, INVERT_FUNCTION);
+            return N_Y_VECTOR;
         }
 
         @Override
@@ -54,7 +54,7 @@ public enum Heading {
     WEST {
         @Override
         public Coordinate getVector() {
-            return X_VECTOR.adjustBy(INVERT_FUNCTION, INVERT_FUNCTION);
+            return N_X_VECTOR;
         }
 
         @Override
@@ -69,8 +69,10 @@ public enum Heading {
     };
 
     private static final IntFunction<Integer> INVERT_FUNCTION = v -> v * -1;
-    private static final Coordinate X_VECTOR = Coordinate.ONE_ZERO;
-    private static final Coordinate Y_VECTOR = Coordinate.ZERO_ONE;
+    private static final Coordinate P_X_VECTOR = Coordinate.ONE_ZERO;
+    private static final Coordinate N_X_VECTOR = P_X_VECTOR.adjustBy(INVERT_FUNCTION, INVERT_FUNCTION);
+    private static final Coordinate P_Y_VECTOR = Coordinate.ZERO_ONE;
+    private static final Coordinate N_Y_VECTOR = P_Y_VECTOR.adjustBy(INVERT_FUNCTION, INVERT_FUNCTION);
 
     public abstract Coordinate getVector();
 
