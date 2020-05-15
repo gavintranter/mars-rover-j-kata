@@ -1,15 +1,15 @@
 package uk.trantr.kata.marsroverj;
 
+import uk.trantr.kata.marsroverj.navigation.Chart;
 import uk.trantr.kata.marsroverj.navigation.Location;
-import uk.trantr.kata.marsroverj.navigation.NavigationChart;
 
 import java.util.Objects;
 
 public final class Rover {
-    private final NavigationChart chart;
+    private final Chart chart;
     private Location location;
 
-    public Rover(Location location, NavigationChart chart) {
+    public Rover(Location location, Chart chart) {
         this.location = location;
         this.chart = chart;
     }

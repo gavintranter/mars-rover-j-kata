@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.IntFunction;
 
-public class NavigationChart {
+public class NavigationChart implements Chart {
 
     private final IntFunction<Integer> latitudeAdjustment;
     private final IntFunction<Integer> longitudeAdjustment;
@@ -24,10 +24,12 @@ public class NavigationChart {
         this.obstacles = obstacles;
     }
 
+    @Override
     public Location determineActualLocation(Location location) {
         return new Location(location.getCoordinate().adjustBy(latitudeAdjustment, longitudeAdjustment), location.getHeading());
     }
 
+    @Override
     public boolean isSafe(Location location) {
         return !(obstacles.contains(location.getCoordinate()));
     }
