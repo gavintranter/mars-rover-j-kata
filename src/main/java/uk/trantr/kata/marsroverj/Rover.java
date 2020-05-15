@@ -38,12 +38,12 @@ public final class Rover {
             return false;
         }
 
-        Rover rover = (Rover) o;
+        Rover other = (Rover) o;
 
-        if (!location.equals(rover.location)) {
+        if (!location.equals(other.location)) {
             return false;
         }
-        return chart.equals(rover.chart);
+        return chart.equals(other.chart);
     }
 
     @Override

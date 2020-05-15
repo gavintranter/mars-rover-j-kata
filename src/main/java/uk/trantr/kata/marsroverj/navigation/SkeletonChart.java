@@ -32,15 +32,15 @@ public abstract class SkeletonChart implements Chart {
             return false;
         }
 
-        SkeletonChart that = (SkeletonChart) o;
+        SkeletonChart other = (SkeletonChart) o;
 
-        if (!Objects.equals(latitudeAdjustment, that.latitudeAdjustment)) {
+        if (!Objects.equals(latitudeAdjustment, other.latitudeAdjustment)) {
             return false;
         }
-        if (!Objects.equals(longitudeAdjustment, that.longitudeAdjustment)) {
+        if (!Objects.equals(longitudeAdjustment, other.longitudeAdjustment)) {
             return false;
         }
-        return Objects.equals(obstacles, that.obstacles);
+        return Objects.equals(obstacles, other.obstacles);
     }
 
     @Override

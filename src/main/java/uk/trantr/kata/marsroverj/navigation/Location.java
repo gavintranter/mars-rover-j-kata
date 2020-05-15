@@ -48,8 +48,8 @@ public final class Location {
             return false;
         }
 
-        Location location = (Location) o;
-        return (heading == location.heading) && Objects.equals(coordinate, location.coordinate);
+        Location other = (Location) o;
+        return (heading == other.heading) && Objects.equals(coordinate, other.coordinate);
     }
 
     @Override

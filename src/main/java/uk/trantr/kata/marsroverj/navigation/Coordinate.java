@@ -54,8 +54,8 @@ public final class Coordinate {
             return false;
         }
 
-        Coordinate that = (Coordinate) o;
-        return (x == that.x) && (y == that.y);
+        Coordinate other = (Coordinate) o;
+        return (x == other.x) && (y == other.y);
     }
 
     @Override
