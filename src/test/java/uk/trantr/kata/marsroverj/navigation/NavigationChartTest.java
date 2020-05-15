@@ -14,7 +14,7 @@ import static uk.trantr.kata.marsroverj.navigation.Heading.NORTH;
 class NavigationChartTest {
 
     private final Set<Coordinate> obstacles = new HashSet<>();
-    private final NavigationChart navigationChart = new NavigationChart(5, 4, obstacles);
+    private final Chart navigationChart = NavigationChart.create(5, 4, obstacles);
 
     @ParameterizedTest(name = "Case: {index} -> Will adjust {0} to {1}")
     @CsvSource({"1/5/NORTH, 1/1/NORTH",
