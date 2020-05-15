@@ -3,7 +3,7 @@ package uk.trantr.kata.marsroverj.navigation;
 import java.util.Set;
 import java.util.function.IntFunction;
 
-public class NavigationChart extends SkeletonChart {
+public class EdgeWrapChart extends SkeletonChart {
 
     public static Chart create(int latitudeExtent, int longitudeExtent, Set<Coordinate> obstacles) {
         IntFunction<Integer> latitudeAdjustment = x -> {
@@ -16,10 +16,10 @@ public class NavigationChart extends SkeletonChart {
             return (beyondExtent == 0) ? longitudeExtent : beyondExtent;
         };
 
-        return new NavigationChart(latitudeAdjustment, longitudeAdjustment, obstacles);
+        return new EdgeWrapChart(latitudeAdjustment, longitudeAdjustment, obstacles);
     }
 
-    private NavigationChart(IntFunction<Integer> latitudeAdjustment, IntFunction<Integer> longitudeAdjustment, Set<Coordinate> obstacles) {
+    private EdgeWrapChart(IntFunction<Integer> latitudeAdjustment, IntFunction<Integer> longitudeAdjustment, Set<Coordinate> obstacles) {
         super(latitudeAdjustment, longitudeAdjustment, obstacles);
     }
 }

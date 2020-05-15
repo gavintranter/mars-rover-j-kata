@@ -6,8 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import uk.trantr.kata.marsroverj.navigation.Chart;
 import uk.trantr.kata.marsroverj.navigation.Coordinate;
+import uk.trantr.kata.marsroverj.navigation.EdgeWrapChart;
 import uk.trantr.kata.marsroverj.navigation.Location;
-import uk.trantr.kata.marsroverj.navigation.NavigationChart;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,7 +27,7 @@ class RoverTest {
         Set<Coordinate> obstacles = new HashSet<>();
         obstacles.add(Coordinate.at(2, 2));
 
-        Chart chart = NavigationChart.create(4, 4, obstacles);
+        Chart chart = EdgeWrapChart.create(4, 4, obstacles);
 
         rover = new Rover(INITIAL_LOCATION, chart);
     }
