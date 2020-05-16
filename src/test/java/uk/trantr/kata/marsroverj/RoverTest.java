@@ -13,12 +13,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static uk.trantr.kata.marsroverj.navigation.Heading.EAST;
-import static uk.trantr.kata.marsroverj.navigation.Heading.NORTH;
+import static uk.trantr.kata.marsroverj.navigation.Heading.E;
+import static uk.trantr.kata.marsroverj.navigation.Heading.N;
 
 class RoverTest {
 
-    private static final Location INITIAL_LOCATION = new Location(1, 1, NORTH);
+    private static final Location INITIAL_LOCATION = new Location(1, 1, N);
 
     private Rover rover;
 
@@ -54,20 +54,20 @@ class RoverTest {
     void willAbortWhenEncounteringUnknownCommand() {
         rover.process("ffAff");
 
-        assertThat(rover.reportLocation()).isEqualTo(new Location(1, 3, NORTH));
+        assertThat(rover.reportLocation()).isEqualTo(new Location(1, 3, N));
     }
 
     @Test
     void willCircumnavigation() {
         rover.process("ffff");
 
-        assertThat(rover.reportLocation()).isEqualTo(new Location(1, 1, NORTH));
+        assertThat(rover.reportLocation()).isEqualTo(new Location(1, 1, N));
     }
 
     @Test
     void willStopParsingCommandsWhenObstacleReached() {
         rover.process("frflfrf");
 
-        assertThat(rover.reportLocation()).isEqualTo(new Location(1, 2, EAST));
+        assertThat(rover.reportLocation()).isEqualTo(new Location(1, 2, E));
     }
 }

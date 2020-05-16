@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static uk.trantr.kata.marsroverj.navigation.Heading.NORTH;
+import static uk.trantr.kata.marsroverj.navigation.Heading.N;
 
 class EdgeWrapChartTest {
 
@@ -17,12 +17,12 @@ class EdgeWrapChartTest {
     private final Chart navigationChart = EdgeWrapChart.create(5, 4, obstacles);
 
     @ParameterizedTest(name = "Case: {index} -> Will adjust {0} to {1}")
-    @CsvSource({"1/5/NORTH, 1/1/NORTH",
-                "1/3/SOUTH, 1/3/SOUTH",
-                "1/0/WEST, 1/4/WEST",
-                "6/1/EAST, 1/1/EAST",
-                "3/1/EAST, 3/1/EAST",
-                "0/1/EAST, 5/1/EAST"})
+    @CsvSource({"1/5/N, 1/1/N",
+                "1/3/S, 1/3/S",
+                "1/0/W, 1/4/W",
+                "6/1/E, 1/1/E",
+                "3/1/E, 3/1/E",
+                "0/1/E, 5/1/E"})
     void willAdjustOnlyCoordinateBeyondExtents(@ConvertWith(LocationConverter.class) Location newLocation,
                                            @ConvertWith(LocationConverter.class) Location expectedCoordinate) {
 
@@ -33,7 +33,7 @@ class EdgeWrapChartTest {
 
     @Test
     void willReportCoordinateIsFreeOfDanger() {
-        Location location = new Location(Coordinate.ONE_ONE, NORTH);
+        Location location = new Location(Coordinate.ONE_ONE, N);
 
         boolean result = navigationChart.isSafe(location);
 
@@ -43,7 +43,7 @@ class EdgeWrapChartTest {
     @Test
     void willReportCoordinateIsNotFreeOfDanger() {
         obstacles.add(Coordinate.ONE_ONE);
-        Location location = new Location(Coordinate.ONE_ONE, NORTH);
+        Location location = new Location(Coordinate.ONE_ONE, N);
 
         boolean result = navigationChart.isSafe(location);
 

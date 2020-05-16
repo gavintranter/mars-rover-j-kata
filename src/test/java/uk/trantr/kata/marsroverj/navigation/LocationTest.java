@@ -9,37 +9,37 @@ class LocationTest {
 
     @Test
     void willChangeLocationForward() {
-        Location initial = new Location(1, 1, NORTH);
+        Location initial = new Location(1, 1, N);
 
         Location actual = initial.forward();
 
-        assertThat(actual).isEqualTo(new Location(1, 2, NORTH));
+        assertThat(actual).isEqualTo(new Location(1, 2, N));
     }
 
     @Test
     void willChangeLocationBackwards() {
-        Location initial = new Location(1, 1, NORTH);
+        Location initial = new Location(1, 1, N);
 
         Location actual = initial.backwards();
 
-        assertThat(actual).isEqualTo(new Location(1, 0, NORTH));
+        assertThat(actual).isEqualTo(new Location(1, 0, N));
     }
 
     @Test
     void willChangeDirectionClockwise() {
-        Location initial = new Location(1, 1, NORTH);
+        Location initial = new Location(1, 1, N);
 
         Location actual = initial.changeHeadingClockwise();
 
-        assertThat(actual).isEqualTo(new Location(1, 1, EAST));
+        assertThat(actual).isEqualTo(new Location(1, 1, E));
     }
 
     @Test
     void willChangeDirectionAntiClockwise() {
-        Location initial = new Location(1, 1, NORTH);
+        Location initial = new Location(1, 1, N);
 
         Location actual = initial.changeHeadingAnticlockwise();
 
-        assertThat(actual).isEqualTo(new Location(1, 1, WEST));
+        assertThat(actual).isEqualTo(new Location(1, 1, W));
     }
 }

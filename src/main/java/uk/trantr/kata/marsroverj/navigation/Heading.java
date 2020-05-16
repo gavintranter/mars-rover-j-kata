@@ -3,7 +3,7 @@ package uk.trantr.kata.marsroverj.navigation;
 import java.util.function.IntFunction;
 
 public enum Heading {
-    NORTH {
+    N {
         @Override
         Coordinate getVector() {
             return P_Y_VECTOR;
@@ -11,15 +11,15 @@ public enum Heading {
 
         @Override
         Heading clockwise() {
-            return EAST;
+            return E;
         }
 
         @Override
         Heading anticlockwise() {
-            return WEST;
+            return W;
         }
     },
-    EAST {
+    E {
         @Override
         Coordinate getVector() {
             return P_X_VECTOR;
@@ -27,15 +27,15 @@ public enum Heading {
 
         @Override
         Heading clockwise() {
-            return SOUTH;
+            return S;
         }
 
         @Override
         Heading anticlockwise() {
-            return NORTH;
+            return N;
         }
     },
-    SOUTH {
+    S {
         @Override
         Coordinate getVector() {
             return N_Y_VECTOR;
@@ -43,15 +43,15 @@ public enum Heading {
 
         @Override
         Heading clockwise() {
-            return WEST;
+            return W;
         }
 
         @Override
         Heading anticlockwise() {
-            return EAST;
+            return E;
         }
     },
-    WEST {
+    W {
         @Override
         Coordinate getVector() {
             return N_X_VECTOR;
@@ -59,12 +59,12 @@ public enum Heading {
 
         @Override
         Heading clockwise() {
-            return NORTH;
+            return N;
         }
 
         @Override
         Heading anticlockwise() {
-            return SOUTH;
+            return S;
         }
     };
 

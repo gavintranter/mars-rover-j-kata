@@ -20,22 +20,22 @@ class CommandTest {
     }
 
     @ParameterizedTest(name = "Case: {index} -> Command: {0} will cause Rover to moe from {1} to {2}")
-    @CsvSource({"f, 1/1/NORTH, 1/2/NORTH",
-            "b, 1/1/NORTH, 1/0/NORTH",
-            "f, 1/1/SOUTH, 1/0/SOUTH",
-            "b, 1/1/SOUTH, 1/2/SOUTH",
-            "f, 1/1/EAST, 2/1/EAST",
-            "b, 1/1/EAST, 0/1/EAST",
-            "f, 1/1/WEST, 0/1/WEST",
-            "b, 1/1/WEST, 2/1/WEST",
-            "r, 1/1/NORTH, 1/1/EAST",
-            "r, 1/1/EAST, 1/1/SOUTH",
-            "r, 1/1/SOUTH, 1/1/WEST",
-            "r, 1/1/WEST, 1/1/NORTH",
-            "l, 1/1/NORTH, 1/1/WEST",
-            "l, 1/1/WEST, 1/1/SOUTH",
-            "l, 1/1/SOUTH, 1/1/EAST",
-            "l, 1/1/EAST, 1/1/NORTH"})
+    @CsvSource({"f, 1/1/N, 1/2/N",
+            "b, 1/1/N, 1/0/N",
+            "f, 1/1/S, 1/0/S",
+            "b, 1/1/S, 1/2/S",
+            "f, 1/1/E, 2/1/E",
+            "b, 1/1/E, 0/1/E",
+            "f, 1/1/W, 0/1/W",
+            "b, 1/1/W, 2/1/W",
+            "r, 1/1/N, 1/1/E",
+            "r, 1/1/E, 1/1/S",
+            "r, 1/1/S, 1/1/W",
+            "r, 1/1/W, 1/1/N",
+            "l, 1/1/N, 1/1/W",
+            "l, 1/1/W, 1/1/S",
+            "l, 1/1/S, 1/1/E",
+            "l, 1/1/E, 1/1/N"})
     void willTranslateLocationAppropriateToHeading(char symbol,
                                                    @ConvertWith(LocationConverter.class) Location initialLocation,
                                                    @ConvertWith(LocationConverter.class) Location finalLocation) {
