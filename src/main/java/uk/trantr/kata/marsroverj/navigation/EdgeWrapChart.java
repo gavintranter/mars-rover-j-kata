@@ -3,6 +3,11 @@ package uk.trantr.kata.marsroverj.navigation;
 import java.util.Set;
 import java.util.function.IntFunction;
 
+/**
+ * This Chart wraps at the edges, producing something akin to a doughnut shapped chart.
+ * Each chart extent begins at 1 rather than zero and extends to include the provide extent.
+ * Foe example if the extent is 4, the available location are 1, 2, 3 and 4.
+ */
 public class EdgeWrapChart extends SkeletonChart {
 
     public static Chart create(int latitudeExtent, int longitudeExtent, Set<Coordinate> obstacles) {
