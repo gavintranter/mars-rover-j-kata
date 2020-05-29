@@ -3,29 +3,25 @@ package uk.trantr.kata.marsroverj;
 import uk.trantr.kata.marsroverj.navigation.Location;
 
 enum Command {
-
-    // Using unorthodox naming to reduce code required to determine invalid commands.
-    // This removes the need for a list of the uppercase commands to be considered invalid,
-    // allowing this enum to represent all the valid commands.
-    f {
+    FORWARD {
         @Override
         public Location execute(Location location) {
             return location.forward();
         }
     },
-    b {
+    BACKWARD {
         @Override
         public Location execute(Location location) {
             return location.backwards();
         }
     },
-    r {
+    RIGHT {
         @Override
         public Location execute(Location location) {
             return location.changeHeadingClockwise();
         }
     },
-    l {
+    LEFT {
         @Override
         public Location execute(Location location) {
             return location.changeHeadingAnticlockwise();
@@ -33,7 +29,13 @@ enum Command {
     };
 
     public static Command parse(char symbol) {
-        return valueOf(String.valueOf(((char)symbol)));
+        return switch (symbol) {
+            case 'f' -> FORWARD;
+            case 'b' -> BACKWARD;
+            case 'r' -> RIGHT;
+            case 'l' -> LEFT;
+            default -> throw new IllegalArgumentException("Unexpected value: " + symbol);
+        };
     }
 
     public abstract Location execute(Location location);

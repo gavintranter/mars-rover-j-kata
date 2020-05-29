@@ -14,7 +14,7 @@ class CommandTest {
 
     // The parameterised test cheat a little by taking advantage of the implicit char <-> int conversions
     @ParameterizedTest
-    @CsvSource({"f, f", "b, b", "r, r", "l, l"})
+    @CsvSource({"f, FORWARD", "b, BACKWARD", "r, RIGHT", "l, LEFT"})
     void willParseKnownCommands(char symbol, Command expectedCommand) {
         assertThat(Command.parse(symbol)).isSameAs(expectedCommand);
     }
