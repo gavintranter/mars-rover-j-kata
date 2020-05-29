@@ -3,7 +3,8 @@ package uk.trantr.kata.marsroverj;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import uk.trantr.kata.marsroverj.navigation.Chart;
 import uk.trantr.kata.marsroverj.navigation.Coordinate;
 import uk.trantr.kata.marsroverj.navigation.EdgeWrapChart;
@@ -11,6 +12,7 @@ import uk.trantr.kata.marsroverj.navigation.Location;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static uk.trantr.kata.marsroverj.navigation.Heading.E;
@@ -32,12 +34,17 @@ class RoverTest {
         rover = new Rover(INITIAL_LOCATION, chart);
     }
 
+    static Stream<Arguments> commandSequences() {
+        return Stream.of(
+                Arguments.of(new char[] {'f','f','r','f','f','r','f','f','r','f','f','r'}),
+                Arguments.of(new char[] {'f','f','l','f','f','l','f','f','l','f','f','l'}),
+                Arguments.of(new char[] {'b','b','r','b','b','r','b','b','r','b','b','r'}),
+                Arguments.of(new char[] {'b','b','l','b','b','l','b','b','l','b','b','l'})
+        );
+    }
     @ParameterizedTest(name = "Case: {index} -> Command: {0} will cause Rover to be at {1}")
-    @CsvSource({"ffrffrffrffr",
-                "fflfflfflffl",
-                "bbrbbrbbrbbr",
-                "bblbblbblbbl"})
-    void roverTravelInASquareShapeReturningToItsOrigin(String commandSequence) {
+    @MethodSource("commandSequences")
+    void roverTravelInASquareShapeReturningToItsOrigin(char[] commandSequence) {
         rover.process(commandSequence);
 
         assertThat(rover.reportLocation()).isEqualTo(INITIAL_LOCATION);
@@ -45,28 +52,28 @@ class RoverTest {
 
     @Test
     void willGoOnMoreComplexJourneyReturningToOrigin() {
-        rover.process("ffrfflfflffr");
+        rover.process(new char[]{'f', 'f', 'r', 'f', 'f', 'l', 'f', 'f', 'l', 'f', 'f', 'r'});
 
         assertThat(rover.reportLocation()).isEqualTo(INITIAL_LOCATION);
     }
 
     @Test
     void willAbortWhenEncounteringUnknownCommand() {
-        rover.process("ffAff");
+        rover.process(new char[] {'f','f','A','f','f'});
 
         assertThat(rover.reportLocation()).isEqualTo(new Location(1, 3, N));
     }
 
     @Test
     void willCircumnavigation() {
-        rover.process("ffff");
+        rover.process(new char[] {'f','f','f','f'});
 
         assertThat(rover.reportLocation()).isEqualTo(new Location(1, 1, N));
     }
 
     @Test
     void willStopParsingCommandsWhenObstacleReached() {
-        rover.process("frflfrf");
+        rover.process(new char[] {'f','r','f','l','f','r','f'});
 
         assertThat(rover.reportLocation()).isEqualTo(new Location(1, 2, E));
     }

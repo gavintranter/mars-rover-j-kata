@@ -3,6 +3,7 @@ package uk.trantr.kata.marsroverj;
 import uk.trantr.kata.marsroverj.navigation.Chart;
 import uk.trantr.kata.marsroverj.navigation.Location;
 
+import java.nio.CharBuffer;
 import java.util.Objects;
 
 public final class Rover {
@@ -14,9 +15,9 @@ public final class Rover {
         this.chart = chart;
     }
 
-    public void process(String commandSequence) {
+    public void process(char[] commandSequence) {
         try {
-             commandSequence.chars()
+             CharBuffer.wrap(commandSequence).chars()
                  .mapToObj(command -> Command.parse((char)command).execute(location))
                  .map(chart::determineActualLocation)
                  .takeWhile(chart::isSafe)
