@@ -32,7 +32,7 @@ enum Command {
         }
     };
 
-    public static Command parse(int symbol) {
+    public static Command parse(char symbol) {
         return valueOf(String.valueOf(((char)symbol)));
     }
 

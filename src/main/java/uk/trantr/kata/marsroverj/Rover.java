@@ -17,7 +17,7 @@ public final class Rover {
     public void process(String commandSequence) {
         try {
              commandSequence.chars()
-                 .mapToObj(command -> Command.parse(command).execute(location))
+                 .mapToObj(command -> Command.parse((char)command).execute(location))
                  .map(chart::determineActualLocation)
                  .takeWhile(chart::isSafe)
                  .forEach(newLocation -> location = newLocation);
