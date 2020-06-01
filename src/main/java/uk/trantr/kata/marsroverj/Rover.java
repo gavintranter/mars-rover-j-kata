@@ -22,7 +22,7 @@ public final class Rover {
         try {
              CharBuffer.wrap(commandSequence).chars()
                  .mapToObj(command -> Command.parse((char)command).execute(location))
-                 .map(chart::determineActualLocation)
+                 .map(chart::translateToChart)
                  .map(chart::isSafe)
                  .forEach(this::accept);
         }

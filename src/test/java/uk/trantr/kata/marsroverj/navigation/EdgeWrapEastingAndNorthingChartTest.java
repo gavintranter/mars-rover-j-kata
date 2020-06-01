@@ -33,7 +33,7 @@ class EdgeWrapEastingAndNorthingChartTest {
     void willAdjustOnlyCoordinateBeyondExtents(@ConvertWith(LocationConverter.class) Location newLocation,
                                            @ConvertWith(LocationConverter.class) Location expectedCoordinate) {
 
-        Location adjustedLocation = navigationChart.determineActualLocation(newLocation);
+        Location adjustedLocation = navigationChart.translateToChart(newLocation);
 
         assertThat(adjustedLocation).isEqualTo(expectedCoordinate);
     }

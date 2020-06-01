@@ -16,7 +16,7 @@ public abstract class SkeletonChart implements Chart {
     }
 
     @Override
-    public Location determineActualLocation(Location location) {
+    public Location translateToChart(Location location) {
         return new Location(location.getCoordinate().adjustBy(latitudeAdjustment, longitudeAdjustment), location.getHeading());
     }
 
