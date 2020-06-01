@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import uk.trantr.kata.marsroverj.navigation.Chart;
 import uk.trantr.kata.marsroverj.navigation.Coordinate;
-import uk.trantr.kata.marsroverj.navigation.EdgeWrapChart;
+import uk.trantr.kata.marsroverj.navigation.EdgeWrapEastingAndNorthingChart;
 import uk.trantr.kata.marsroverj.navigation.Location;
 
 import java.util.HashSet;
@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static uk.trantr.kata.marsroverj.navigation.Coordinate.at;
 import static uk.trantr.kata.marsroverj.navigation.Heading.E;
 import static uk.trantr.kata.marsroverj.navigation.Heading.N;
 
@@ -27,9 +28,9 @@ class RoverTest {
     @BeforeEach
     void setUp() {
         Set<Coordinate> obstacles = new HashSet<>();
-        obstacles.add(Coordinate.at(2, 2));
+        obstacles.add(at(2, 2));
 
-        Chart chart = EdgeWrapChart.create(4, 4, obstacles);
+        Chart chart = EdgeWrapEastingAndNorthingChart.create(4, 4, obstacles);
 
         rover = new Rover(INITIAL_LOCATION, chart);
     }

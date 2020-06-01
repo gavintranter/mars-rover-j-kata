@@ -11,10 +11,10 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 import static uk.trantr.kata.marsroverj.navigation.Heading.N;
 
-class EdgeWrapChartTest {
+class EdgeWrapEastingAndNorthingChartTest {
 
     private final Set<Coordinate> obstacles = new HashSet<>();
-    private final Chart navigationChart = EdgeWrapChart.create(5, 4, obstacles);
+    private final Chart navigationChart = EdgeWrapEastingAndNorthingChart.create(5, 4, obstacles);
 
     @ParameterizedTest(name = "Case: {index} -> Will adjust {0} to {1}")
     @CsvSource({"1/5/N, 1/1/N",

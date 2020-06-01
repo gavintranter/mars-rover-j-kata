@@ -8,7 +8,7 @@ import java.util.function.IntFunction;
  * Each chart extent begins at 1 rather than zero and extends to include the provide extent.
  * Foe example if the extent is 4, the available location are 1, 2, 3 and 4.
  */
-public class EdgeWrapChart extends SkeletonChart {
+public class EdgeWrapEastingAndNorthingChart extends SkeletonChart {
 
     public static Chart create(int latitudeExtent, int longitudeExtent, Set<Coordinate> obstacles) {
         IntFunction<Integer> latitudeAdjustment = x -> {
@@ -21,10 +21,10 @@ public class EdgeWrapChart extends SkeletonChart {
             return (beyondExtent == 0) ? longitudeExtent : beyondExtent;
         };
 
-        return new EdgeWrapChart(latitudeAdjustment, longitudeAdjustment, obstacles);
+        return new EdgeWrapEastingAndNorthingChart(latitudeAdjustment, longitudeAdjustment, obstacles);
     }
 
-    private EdgeWrapChart(IntFunction<Integer> latitudeAdjustment, IntFunction<Integer> longitudeAdjustment, Set<Coordinate> obstacles) {
+    private EdgeWrapEastingAndNorthingChart(IntFunction<Integer> latitudeAdjustment, IntFunction<Integer> longitudeAdjustment, Set<Coordinate> obstacles) {
         super(latitudeAdjustment, longitudeAdjustment, obstacles);
     }
 }
