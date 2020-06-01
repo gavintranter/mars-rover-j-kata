@@ -33,7 +33,7 @@ class EdgeWrapEastingAndNorthingChartTest {
     void willAdjustOnlyCoordinateBeyondExtents(@ConvertWith(LocationConverter.class) Location newLocation,
                                            @ConvertWith(LocationConverter.class) Location expectedCoordinate) {
 
-        Location adjustedLocation = navigationChart.translateToChart(newLocation);
+        Location adjustedLocation = navigationChart.transformToChart(newLocation);
 
         assertThat(adjustedLocation).isEqualTo(expectedCoordinate);
     }
@@ -42,7 +42,7 @@ class EdgeWrapEastingAndNorthingChartTest {
     void willReportCoordinateIsFreeOfDanger() {
         Location location = new Location(ONE_ONE, N);
 
-        Traversable result = navigationChart.isSafe(location);
+        Traversable result = navigationChart.determineIfPassable(location);
 
         assertThat(result.isSafe()).isTrue();
         assertThat(result.getLocation()).isEqualTo(new Location(ONE_ONE, N));
@@ -53,7 +53,7 @@ class EdgeWrapEastingAndNorthingChartTest {
         obstacles.add(ONE_ONE);
         Location location = new Location(ONE_ONE, N);
 
-        Traversable result = navigationChart.isSafe(location);
+        Traversable result = navigationChart.determineIfPassable(location);
 
         assertThat(result.isSafe()).isFalse();
         assertThat(result.getLocation()).isEqualTo(new Location(ONE_ONE, N));

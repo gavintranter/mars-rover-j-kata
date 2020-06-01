@@ -1,7 +1,7 @@
 package uk.trantr.kata.marsroverj.navigation;
 
 public interface Chart {
-    Location translateToChart(Location location);
+    Location transformToChart(Location location);
 
-    Traversable isSafe(Location location);
+    Traversable determineIfPassable(Location location);
 }

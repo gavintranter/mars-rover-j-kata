@@ -16,12 +16,12 @@ public abstract class SkeletonChart implements Chart {
     }
 
     @Override
-    public Location translateToChart(Location location) {
+    public Location transformToChart(Location location) {
         return new Location(location.getCoordinate().adjustBy(latitudeAdjustment, longitudeAdjustment), location.getHeading());
     }
 
     @Override
-    public Traversable isSafe(Location location) {
+    public Traversable determineIfPassable(Location location) {
         if (obstacles.contains(location.getCoordinate())) {
             return Traversable.unsafeToProceed(location);
         }

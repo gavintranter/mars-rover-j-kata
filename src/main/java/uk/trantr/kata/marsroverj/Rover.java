@@ -21,9 +21,9 @@ public final class Rover {
         obstacleEncountered = false;
         try {
              CharBuffer.wrap(commandSequence).chars()
-                 .mapToObj(command -> Command.parse((char)command).execute(location))
-                 .map(chart::translateToChart)
-                 .map(chart::isSafe)
+                 .mapToObj(command -> Command.parse((char)command).calculateLocation(location))
+                 .map(chart::transformToChart)
+                 .map(chart::determineIfPassable)
                  .forEach(this::accept);
         }
         catch (IllegalArgumentException e) {
