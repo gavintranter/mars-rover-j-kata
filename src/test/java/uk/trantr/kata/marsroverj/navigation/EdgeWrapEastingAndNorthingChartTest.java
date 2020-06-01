@@ -1,5 +1,6 @@
 package uk.trantr.kata.marsroverj.navigation;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ConvertWith;
@@ -15,6 +16,11 @@ class EdgeWrapEastingAndNorthingChartTest {
 
     private final Set<Coordinate> obstacles = new HashSet<>();
     private final Chart navigationChart = EdgeWrapEastingAndNorthingChart.create(5, 4, obstacles);
+
+    @BeforeEach
+    void init() {
+        obstacles.clear();
+    }
 
     @ParameterizedTest(name = "Case: {index} -> Will adjust {0} to {1}")
     @CsvSource({"1/5/N, 1/1/N",
