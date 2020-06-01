@@ -2,6 +2,7 @@ package uk.trantr.kata.marsroverj;
 
 import uk.trantr.kata.marsroverj.navigation.Chart;
 import uk.trantr.kata.marsroverj.navigation.Location;
+import uk.trantr.kata.marsroverj.navigation.Traversable;
 
 import java.nio.CharBuffer;
 import java.util.Objects;
@@ -9,6 +10,7 @@ import java.util.Objects;
 public final class Rover {
     private final Chart chart;
     private Location location;
+    private boolean obstacleEncountered = false;
 
     public Rover(Location location, Chart chart) {
         this.location = location;
@@ -16,15 +18,27 @@ public final class Rover {
     }
 
     public void process(char[] commandSequence) {
+        obstacleEncountered = false;
         try {
              CharBuffer.wrap(commandSequence).chars()
                  .mapToObj(command -> Command.parse((char)command).execute(location))
                  .map(chart::determineActualLocation)
-                 .takeWhile(chart::isSafe)
-                 .forEach(newLocation -> location = newLocation);
+                 .map(chart::isSafe)
+                 .forEach(this::accept);
         }
         catch (IllegalArgumentException e) {
             // Ignore unknown commands
+        }
+    }
+
+    private void accept(Traversable newLocation) {
+        if (!obstacleEncountered) {
+            if (newLocation.isSafe()) {
+                location = newLocation.getLocation();
+            } else {
+                obstacleEncountered = true;
+                System.err.println("Obstacle encountered at " + newLocation.getLocation());
+            }
         }
     }
 

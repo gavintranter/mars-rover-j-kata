@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static uk.trantr.kata.marsroverj.navigation.Coordinate.ONE_ONE;
 import static uk.trantr.kata.marsroverj.navigation.Heading.N;
 
 class EdgeWrapEastingAndNorthingChartTest {
@@ -39,20 +40,22 @@ class EdgeWrapEastingAndNorthingChartTest {
 
     @Test
     void willReportCoordinateIsFreeOfDanger() {
-        Location location = new Location(Coordinate.ONE_ONE, N);
+        Location location = new Location(ONE_ONE, N);
 
-        boolean result = navigationChart.isSafe(location);
+        Traversable result = navigationChart.isSafe(location);
 
-        assertThat(result).isTrue();
+        assertThat(result.isSafe()).isTrue();
+        assertThat(result.getLocation()).isEqualTo(new Location(ONE_ONE, N));
     }
 
     @Test
     void willReportCoordinateIsNotFreeOfDanger() {
-        obstacles.add(Coordinate.ONE_ONE);
-        Location location = new Location(Coordinate.ONE_ONE, N);
+        obstacles.add(ONE_ONE);
+        Location location = new Location(ONE_ONE, N);
 
-        boolean result = navigationChart.isSafe(location);
+        Traversable result = navigationChart.isSafe(location);
 
-        assertThat(result).isFalse();
+        assertThat(result.isSafe()).isFalse();
+        assertThat(result.getLocation()).isEqualTo(new Location(ONE_ONE, N));
     }
 }

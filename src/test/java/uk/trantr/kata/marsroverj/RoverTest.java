@@ -73,7 +73,7 @@ class RoverTest {
     }
 
     @Test
-    void willStopParsingCommandsWhenObstacleReached() {
+    void willStopExecutingCommandsWhenObstacleReached() {
         rover.process(new char[] {'f','r','f','l','f','r','f'});
 
         assertThat(rover.reportLocation()).isEqualTo(new Location(1, 2, E));

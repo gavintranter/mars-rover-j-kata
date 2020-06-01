@@ -21,8 +21,13 @@ public abstract class SkeletonChart implements Chart {
     }
 
     @Override
-    public boolean isSafe(Location location) {
-        return !(obstacles.contains(location.getCoordinate()));
+    public Traversable isSafe(Location location) {
+        if (obstacles.contains(location.getCoordinate())) {
+            return Traversable.unsafeToProceed(location);
+        }
+        else {
+            return Traversable.safeToProceed(location);
+        }
     }
 
     @Override
